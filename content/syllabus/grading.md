@@ -4,22 +4,6 @@ date =  2018-08-09T16:46:59+02:00
 weight = 15
 +++
 
-There are 60 points in total for this class. The final grade are given as follows:
-
-Grade | Points
-:-- | :--
-6.0 | 57-60
-5.5 | 52-56
-5.0 | 47-51
-4.5 | 42-46
-4.0 | 37-41
-3.5 | 32-36
-3.0 | 27-31
-2.5 | 22-26
-2.0 | 17-21
-1.5 | 12-16
-1.0 | 0-11
-
 Learning outcomes will be assessed based on the performances within each of the following categories:
 
 Type | Points 

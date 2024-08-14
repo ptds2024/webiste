@@ -15,8 +15,4 @@ This class is intended to introduce to the students a wide range of programming 
 - **Web scraping:** Automatic extraction of data from websites using [SelectorGadget](https://cran.r-project.org/web/packages/rvest/vignettes/selectorgadget.html), [rvest](https://blog.rstudio.com/2014/11/24/rvest-easy-web-scraping-with-r/) and [quantmod](https://www.quantmod.com/), regular expression
 - **High performance computing:** R and C++ integration via [Rcpp](http://www.rcpp.org/), parallel computing.
 
-We don't assume any prior IT background from our students; however, we do expect a strong desire to acquire valuable and hands-on programming skills.
-
-{{% notice info %}}
-This course is complementary to the [Data Science in Business Analytics](https://www.unil.ch/hec/home/menuinst/masters/management/cours-et-horaires.html?url=/web/syllabus/2868) class. We highly recommend that students follow this class prior to PTDS.
-{{% /notice %}}
+We do not assume any prior IT background from our students; however, we do expect a strong desire to acquire valuable and hands-on programming skills.

@@ -26,8 +26,7 @@ weight = 5
 
 #### Teaching Assistant 
 
-- **Name:** Aleksandr Shemendyuk
-- **Email:** [aleksandr.shemendyuk@unil.ch](mailto:aleksandr.shemendyuk@unil.ch)
-- **Office:** Extranef/107
+- **Name:** TBD
+- **Email:** 
+- **Office:** 
 - **Office Hours:** Appointment may be made upon request.
-- <i class='fab fa-github'></i> [find me on GitHub](https://github.com/AlexShem)

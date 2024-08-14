@@ -30,12 +30,12 @@ The textbooks below are also recommended and are legally available online for fr
 - **Recommended**: [R Packages Hadley Wickham](http://r-pkgs.had.co.nz/) by Hadley Wickham
 - **Recommended**: [An Introduction to R](https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf) by W. N. Venables, D. M. Smith, and the R Core Team
 - **Recommended**: [blogdown: Creating Websites with R Markdown](https://bookdown.org/yihui/blogdown/) by Yihui Xie, Amber Thomas and Alison Presmanes Hill
-- **Recommended**: [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/) by Yihui Xie, J. J. Allaire, Garrett Grolemund
 - **Recommended**: [Mastering Shiny](https://mastering-shiny.org/) by Hadley Wickham
 - **Recommended**: [Happy Git and GitHub for the useR](https://happygitwithr.com/) by Jennifer Bryan
 
 The following textbooks are helpful, but not necessary to succeed in the course:
 
+- **Supplemental**: [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/) by Yihui Xie, J. J. Allaire, Garrett Grolemund
 - **Supplemental**: [ggplot2: Elegant Graphics for Data Analysis (2nd Edition - GitHub Only)](https://github.com/hadley/ggplot2-book) by Hadley Wickham
 - **Supplemental**: [R for Data Science](http://r4ds.had.co.nz/) by Garrett Grolemund and Hadley Wickham
 - **Supplemental**: [The R Inferno](https://www.burns-stat.com/pages/Tutor/R_inferno.pdf) by Patrick Burns

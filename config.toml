@@ -16,7 +16,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
 
 [params]
-  description = "This website provides the support for the class Programming tools in data science given at the Faculty of Business and Economics (HEC Lausanne) of the University of Lausanne in Fall (currently 2023)"
+  description = "This website provides the support for the class Programming tools in data science given at the Faculty of Business and Economics (HEC Lausanne) of the University of Lausanne in Fall (currently 2024)"
   author = "Samuel Orso"
   # Shows a checkmark for visited pages on the menu
   showVisitedLinks = false
@@ -44,13 +44,13 @@ home = [ "HTML", "RSS", "JSON"]
 [[menu.shortcuts]]
 name = "<i class='fab fa-github'></i> Github repo"
 identifier = "ds"
-url = "https://github.com/ptds2023/"
+url = "https://github.com/ptds2024/"
 weight = 5
 
 [[menu.shortcuts]]
 name = "<i class='fa fa-fw fa-users'></i> Discussion forum"
 identifier = "fm"
-url = "https://forms.gle/9EzB7J5mzNkYgCtv7"
+url = "https://forms.gle/9aKQ25idaypnmAJb8"
 weight = 10
 
 [[menu.shortcuts]]
