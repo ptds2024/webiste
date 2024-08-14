@@ -1,0 +1,1696 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.85.0" />
+    <meta name="description" content="This website provides the support for the class Programming tools in data science given at the Faculty of Business and Economics (HEC Lausanne) of the University of Lausanne in Fall (currently 2021)">
+<meta name="author" content="Samuel Orso">
+
+    <link rel="shortcut icon" href="https://www.unil.ch/favicon.ico" type="image/x-icon" />
+<link rel="icon" href="https://www.unil.ch/favicon.ico" type="image/x-icon" />
+
+    <title>Logistic regression :: Programming tools for data science</title>
+
+    
+    <link href="/css/nucleus.css?1636712690" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1636712690" rel="stylesheet">
+    <link href="/css/hybrid.css?1636712690" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1636712690" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1636712690" rel="stylesheet">
+    <link href="/css/auto-complete.css?1636712690" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1636712690" rel="stylesheet">
+    <link href="/css/theme.css?1636712690" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1636712690" rel="stylesheet">
+    
+      <link href="/css/theme-green.css?1636712690" rel="stylesheet">
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1636712690"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+    <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-176152424-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+  </head>
+  <body class="" data-url="/tutorials/logistic/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+	<img src="https://raw.githubusercontent.com/SMAC-Group/ptds2018_website/master/data/hec_logo_white.png" alt="hec_logo" height="80" width="155">
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1636712690"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1636712690"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/ptds.samorso.ch\/";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1636712690"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/syllabus/" title="Syllabus" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/syllabus/">
+          Syllabus
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/syllabus/general/" title="General information" class="dd-item ">
+        <a href="/syllabus/general/">
+        General information
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/syllabus/coursedescr/" title="Course description" class="dd-item ">
+        <a href="/syllabus/coursedescr/">
+        Course description
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/syllabus/grading/" title="Grading" class="dd-item ">
+        <a href="/syllabus/grading/">
+        Grading
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/syllabus/communication/" title="Communication" class="dd-item ">
+        <a href="/syllabus/communication/">
+        Communication
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/syllabus/material/" title="Material" class="dd-item ">
+        <a href="/syllabus/material/">
+        Material
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/syllabus/final/" title="Convinced?" class="dd-item ">
+        <a href="/syllabus/final/">
+        Convinced?
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/lectures/" title="Lectures" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/lectures/">
+          Lectures
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/lectures/additional/" title="Supplementary material" class="dd-item ">
+        <a href="/lectures/additional/">
+        Supplementary material
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/tutorials/" title="Tutorials" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/tutorials/">
+          Tutorials
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/tutorials/r_install/" title="R/RStudio installation and setup" class="dd-item ">
+        <a href="/tutorials/r_install/">
+        R/RStudio installation and setup
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/tutorials/style/" title="R Coding Style Guide" class="dd-item ">
+        <a href="/tutorials/style/">
+        R Coding Style Guide
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/tutorials/workflow/" title="Project-oriented workflow" class="dd-item ">
+        <a href="/tutorials/workflow/">
+        Project-oriented workflow
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/tutorials/logistic/" title="Logistic regression" class="dd-item active">
+        <a href="/tutorials/logistic/">
+        Logistic regression
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/homeworks/" title="Homeworks" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/homeworks/">
+          Homeworks
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/homeworks/schedule/" title="Schedule" class="dd-item ">
+        <a href="/homeworks/schedule/">
+        Schedule
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/homeworks/hw0/" title="homework #0" class="dd-item ">
+        <a href="/homeworks/hw0/">
+        homework #0
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/homeworks/hw1/" title="homework #1" class="dd-item ">
+        <a href="/homeworks/hw1/">
+        homework #1
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/homeworks/hw1-sol/" title="homework #1 solutions" class="dd-item ">
+        <a href="/homeworks/hw1-sol/">
+        homework #1 solutions
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/homeworks/hw2/" title="homework #2" class="dd-item ">
+        <a href="/homeworks/hw2/">
+        homework #2
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/homeworks/hw3/" title="homework #3" class="dd-item ">
+        <a href="/homeworks/hw3/">
+        homework #3
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/project/" title="Project" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/project/">
+          Project
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/project/output/" title="Project" class="dd-item ">
+        <a href="/project/output/">
+        Project
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/project/proposal/" title="Proposal" class="dd-item ">
+        <a href="/project/proposal/">
+        Proposal
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/group/" title="Groups" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/group/">
+          Groups
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/group/groups/" title="Composition" class="dd-item ">
+        <a href="/group/groups/">
+        Composition
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/resources/" title="Resources" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/resources/">
+          Resources
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://github.com/ptds2020/"><i class='fab fa-github'></i> Github repo</a>
+              </li>
+          
+              <li> 
+                  <a class="padding" href="https://shiny.samorso.ch/fillingform/"><i class='fa fa-fw fa-users'></i> Discussion forum</a>
+              </li>
+          
+              <li> 
+                  <a class="padding" href="https://smac-group.github.io/ds/"><i class='fa fa-fw fa-book'></i> Lectures</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Programming tools in data science</a> > <a href='/tutorials/'>Tutorials</a> > Logistic regression
+          
+         
+          
+         
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#logistic-regression-model">Logistic regression model</a></li>
+        <li><a href="#mle-for-bernoulli-random-variables">MLE for Bernoulli random variables</a></li>
+        <li><a href="#mle-for-logistic-regression">MLE for logistic regression</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Logistic regression
+            </h1>
+          
+
+        
+
+
+
+<p>The aim of this tutorial is to show how to write your own program for
+estimating a logistic regression. Note that the goal is purely educational
+since the logistic regression has already solid implementations in R.</p>
+<h3 id="introduction">Introduction</h3>
+<p>Logistic regression is one of most famous tool to model binary data.
+It is often introduced in under-graduate class of statistics and machine
+learning.</p>
+<p>For illustration, we fit a logistic regression on the <code>titanic</code>
+dataset. This dataset is made available for example via the
+<code>titanic</code> R package. You can obtain more detail on this dataset
+by calling the help <code>? titanic_train</code>, read the package
+<a href="https://www.rdocumentation.org/packages/titanic/versions/0.1.0">documentation</a>
+or the <a href="https://www.kaggle.com/c/titanic/data">Kaggle</a> competition
+webpage. When installed, <code>R</code> comes already equipped with a rich
+library called <code>stats</code> which contains the <code>glm</code> function that
+allows to fit Generalized Linear Model, a broad class of model
+that includes logistic regression. In the next lines of code,
+we see an example using this <code>glm</code> function on the <code>titanic</code>
+dataset.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e">## decomment if not installed</span>
+<span style="color:#75715e">## install.packages(&#34;titanic&#34;)</span>
+
+<span style="color:#a6e22e">library</span>(titanic) <span style="color:#75715e"># call the library</span>
+<span style="color:#a6e22e">data</span>(<span style="color:#e6db74">&#34;titanic_train&#34;</span>) <span style="color:#75715e"># load the training dataset</span>
+
+fit_logistic <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">glm</span>(Survived <span style="color:#f92672">~</span> Pclass <span style="color:#f92672">+</span> Sex <span style="color:#f92672">+</span> Age <span style="color:#f92672">+</span> SibSp <span style="color:#f92672">+</span> 
+                      Parch <span style="color:#f92672">+</span> Fare, 
+                    family <span style="color:#f92672">=</span> <span style="color:#a6e22e">binomial</span>(link <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;logit&#34;</span>), 
+                    data <span style="color:#f92672">=</span> titanic_train)
+<span style="color:#a6e22e">summary</span>(fit_logistic)
+</code></pre></div><p>Few comments:</p>
+<ol>
+<li>We try to explain the binary data <code>Survived</code>
+with six different covariates, or explanatory variables.</li>
+<li>The <code>glm</code> function takes as first argument a <code>formula</code> object,
+here <code>Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare</code>
+(check <code>? formula</code> for more details).</li>
+<li>The <code>family</code> argument of <code>glm</code> specifies the distribution;
+for logistic regression it is specified to <code>binomial(link = &quot;logit&quot;)</code>.</li>
+<li>The <code>data</code> argument gives the dataset so names can be directly
+used in the <code>formula</code>.</li>
+</ol>
+<p>The output of the <code>summary</code> is</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">Call<span style="color:#f92672">:</span>
+<span style="color:#a6e22e">glm</span>(formula <span style="color:#f92672">=</span> Survived <span style="color:#f92672">~</span> Pclass <span style="color:#f92672">+</span> Sex <span style="color:#f92672">+</span> Age <span style="color:#f92672">+</span> SibSp <span style="color:#f92672">+</span> Parch <span style="color:#f92672">+</span> 
+    Fare, family <span style="color:#f92672">=</span> <span style="color:#a6e22e">binomial</span>(link <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;logit&#34;</span>), data <span style="color:#f92672">=</span> titanic_train)
+
+Deviance Residuals<span style="color:#f92672">:</span> 
+    Min       <span style="color:#ae81ff">1</span>Q   Median       <span style="color:#ae81ff">3</span>Q      Max  
+<span style="color:#ae81ff">-2.7953</span>  <span style="color:#ae81ff">-0.6476</span>  <span style="color:#ae81ff">-0.3847</span>   <span style="color:#ae81ff">0.6271</span>   <span style="color:#ae81ff">2.4433</span>  
+
+Coefficients<span style="color:#f92672">:</span>
+             Estimate Std. Error z value <span style="color:#a6e22e">Pr</span>(<span style="color:#f92672">&gt;|</span>z<span style="color:#f92672">|</span>)    
+(Intercept)  <span style="color:#ae81ff">5.389003</span>   <span style="color:#ae81ff">0.603734</span>   <span style="color:#ae81ff">8.926</span>  <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2e-16</span> <span style="color:#f92672">***</span>
+Pclass      <span style="color:#ae81ff">-1.242249</span>   <span style="color:#ae81ff">0.163191</span>  <span style="color:#ae81ff">-7.612</span> <span style="color:#ae81ff">2.69e-14</span> <span style="color:#f92672">***</span>
+Sexmale     <span style="color:#ae81ff">-2.634845</span>   <span style="color:#ae81ff">0.219609</span> <span style="color:#ae81ff">-11.998</span>  <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2e-16</span> <span style="color:#f92672">***</span>
+Age         <span style="color:#ae81ff">-0.043953</span>   <span style="color:#ae81ff">0.008179</span>  <span style="color:#ae81ff">-5.374</span> <span style="color:#ae81ff">7.70e-08</span> <span style="color:#f92672">***</span>
+SibSp       <span style="color:#ae81ff">-0.375755</span>   <span style="color:#ae81ff">0.127361</span>  <span style="color:#ae81ff">-2.950</span>  <span style="color:#ae81ff">0.00317</span> <span style="color:#f92672">**</span> 
+Parch       <span style="color:#ae81ff">-0.061937</span>   <span style="color:#ae81ff">0.122925</span>  <span style="color:#ae81ff">-0.504</span>  <span style="color:#ae81ff">0.61436</span>    
+Fare         <span style="color:#ae81ff">0.002160</span>   <span style="color:#ae81ff">0.002493</span>   <span style="color:#ae81ff">0.866</span>  <span style="color:#ae81ff">0.38627</span>    
+<span style="color:#f92672">---</span>
+Signif. codes<span style="color:#f92672">:</span>  <span style="color:#ae81ff">0</span> ‘<span style="color:#f92672">***</span>’ <span style="color:#ae81ff">0.001</span> ‘<span style="color:#f92672">**</span>’ <span style="color:#ae81ff">0.01</span> ‘<span style="color:#f92672">*</span>’ <span style="color:#ae81ff">0.05</span> ‘.’ <span style="color:#ae81ff">0.1</span> ‘ ’ <span style="color:#ae81ff">1</span>
+
+(Dispersion parameter for binomial family taken to be <span style="color:#ae81ff">1</span>)
+
+    Null deviance<span style="color:#f92672">:</span> <span style="color:#ae81ff">964.52</span>  on <span style="color:#ae81ff">713</span>  degrees of freedom
+Residual deviance<span style="color:#f92672">:</span> <span style="color:#ae81ff">635.81</span>  on <span style="color:#ae81ff">707</span>  degrees of <span style="color:#a6e22e">freedom
+</span><span style="color:#a6e22e">  </span>(<span style="color:#ae81ff">177</span> observations deleted due to missingness)
+AIC<span style="color:#f92672">:</span> <span style="color:#ae81ff">649.81</span>
+
+Number of Fisher Scoring iterations<span style="color:#f92672">:</span> <span style="color:#ae81ff">5</span>
+</code></pre></div><p>The column <code>Estimate</code> returns the estimators of the logistic regression;
+this is the quantities we are going to compute in this tutorial.
+Note that there are 177 observations missing.</p>
+<p>We can for example visualize these missing values with the
+<a href="https://cran.r-project.org/web/packages/VIM/">VIM</a> library.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e">## decomment if not installed</span>
+<span style="color:#75715e">## install.packages(&#34;VIM&#34;)</span>
+<span style="color:#a6e22e">library</span>(VIM)
+<span style="color:#a6e22e">matrixplot</span>(titanic_train)
+</code></pre></div><p><!-- raw HTML omitted --></p>
+<p>It appears clearly that the variable <code>Age</code> is the only
+one missing values. There are different way to deal
+with missing values (<code>glm</code> simply delete the corresponding rows).
+Here for simplicity we will not consider <code>Age</code> so
+we have the following model:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">fit_logistic2 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">glm</span>(Survived <span style="color:#f92672">~</span> Pclass <span style="color:#f92672">+</span> Sex <span style="color:#f92672">+</span> SibSp <span style="color:#f92672">+</span> 
+                      Parch <span style="color:#f92672">+</span> Fare, 
+                     family <span style="color:#f92672">=</span> <span style="color:#a6e22e">binomial</span>(link <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;logit&#34;</span>), 
+                     data <span style="color:#f92672">=</span> titanic_train)
+<span style="color:#a6e22e">summary</span>(fit_logistic2)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">Call<span style="color:#f92672">:</span>
+<span style="color:#a6e22e">glm</span>(formula <span style="color:#f92672">=</span> Survived <span style="color:#f92672">~</span> Pclass <span style="color:#f92672">+</span> Sex <span style="color:#f92672">+</span> SibSp <span style="color:#f92672">+</span> Parch <span style="color:#f92672">+</span> Fare, 
+    family <span style="color:#f92672">=</span> <span style="color:#a6e22e">binomial</span>(link <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;logit&#34;</span>), data <span style="color:#f92672">=</span> titanic_train)
+
+Deviance Residuals<span style="color:#f92672">:</span> 
+    Min       <span style="color:#ae81ff">1</span>Q   Median       <span style="color:#ae81ff">3</span>Q      Max  
+<span style="color:#ae81ff">-2.2340</span>  <span style="color:#ae81ff">-0.6786</span>  <span style="color:#ae81ff">-0.4817</span>   <span style="color:#ae81ff">0.6315</span>   <span style="color:#ae81ff">2.5515</span>  
+
+Coefficients<span style="color:#f92672">:</span>
+             Estimate Std. Error z value <span style="color:#a6e22e">Pr</span>(<span style="color:#f92672">&gt;|</span>z<span style="color:#f92672">|</span>)    
+(Intercept)  <span style="color:#ae81ff">3.147350</span>   <span style="color:#ae81ff">0.375154</span>   <span style="color:#ae81ff">8.389</span>  <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2e-16</span> <span style="color:#f92672">***</span>
+Pclass      <span style="color:#ae81ff">-0.835995</span>   <span style="color:#ae81ff">0.126848</span>  <span style="color:#ae81ff">-6.591</span> <span style="color:#ae81ff">4.38e-11</span> <span style="color:#f92672">***</span>
+Sexmale     <span style="color:#ae81ff">-2.759428</span>   <span style="color:#ae81ff">0.195930</span> <span style="color:#ae81ff">-14.084</span>  <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2e-16</span> <span style="color:#f92672">***</span>
+SibSp       <span style="color:#ae81ff">-0.256350</span>   <span style="color:#ae81ff">0.100785</span>  <span style="color:#ae81ff">-2.544</span>    <span style="color:#ae81ff">0.011</span> <span style="color:#f92672">*</span>  
+Parch       <span style="color:#ae81ff">-0.088766</span>   <span style="color:#ae81ff">0.113191</span>  <span style="color:#ae81ff">-0.784</span>    <span style="color:#ae81ff">0.433</span>    
+Fare         <span style="color:#ae81ff">0.003416</span>   <span style="color:#ae81ff">0.002355</span>   <span style="color:#ae81ff">1.451</span>    <span style="color:#ae81ff">0.147</span>    
+<span style="color:#f92672">---</span>
+Signif. codes<span style="color:#f92672">:</span>  <span style="color:#ae81ff">0</span> ‘<span style="color:#f92672">***</span>’ <span style="color:#ae81ff">0.001</span> ‘<span style="color:#f92672">**</span>’ <span style="color:#ae81ff">0.01</span> ‘<span style="color:#f92672">*</span>’ <span style="color:#ae81ff">0.05</span> ‘.’ <span style="color:#ae81ff">0.1</span> ‘ ’ <span style="color:#ae81ff">1</span>
+
+(Dispersion parameter for binomial family taken to be <span style="color:#ae81ff">1</span>)
+
+    Null deviance<span style="color:#f92672">:</span> <span style="color:#ae81ff">1186.66</span>  on <span style="color:#ae81ff">890</span>  degrees of freedom
+Residual deviance<span style="color:#f92672">:</span>  <span style="color:#ae81ff">816.75</span>  on <span style="color:#ae81ff">885</span>  degrees of freedom
+AIC<span style="color:#f92672">:</span> <span style="color:#ae81ff">828.75</span>
+
+Number of Fisher Scoring iterations<span style="color:#f92672">:</span> <span style="color:#ae81ff">5</span>
+</code></pre></div><h3 id="logistic-regression-model">Logistic regression model</h3>
+<p>In probability theory, a random variable $Y$ that takes
+value $1$ with probability $p$ and $0$ with probability
+$1-p$ is called a Bernoulli random variable.
+We can write this statement as $\Pr(Y=1)=p$
+and $\Pr(Y=0)=1-p$ where $p\in(0,1)$ is often called
+the probability of success. We can write the
+same statement more compactly as
+$$\Pr(Y)=p^Y(1-p)^{1-Y}.$$</p>
+<p>The logistic regression model replaces this probability of
+success by the sigmoid function
+$$\sigma(t)=\frac{1}{1+e^{-t}}.$$
+Generally we express further $t$ as a linear combination of
+known covariates $x$ and unknown coefficients $w$ as follows:
+$$t = w _0 + \sum _{j=1} ^{p} x _j w _j,$$</p>
+<p>or more compactly in matrix form<br>
+$$t = Xw,$$</p>
+<p>where the first column of $X$ is $1$&rsquo;s and $w=(w _0, \ldots , w _{p})^{T}$.
+In this tutorial we are interested in estimating the coefficients $w$
+and we are going to use the maximum likelihood estimator (MLE).</p>
+<h3 id="mle-for-bernoulli-random-variables">MLE for Bernoulli random variables</h3>
+<p>Maximum likelihood estimator? Suppose you obtained $n$ observations,
+for example as follows:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">p <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">.25</span>
+n <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">10</span>
+<span style="color:#a6e22e">set.seed</span>(<span style="color:#ae81ff">9842</span>)
+y <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">rbinom</span>(n,size<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>,prob<span style="color:#f92672">=</span>p)
+y
+</code></pre></div><p>(note that we use <code>rbinom()</code> as Bernoulli distribution
+is a special case of the binomial distribution, which
+maybe also explain the <code>family</code> argument used before.)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"> [1] <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1</span>
+</code></pre></div><p>but you don&rsquo;t know the parameter $p$. So a question is, what
+is this value? One way to answer this problem is to consider
+the <em>likelihood function</em>, a function that measures
+how probable is a given data as a function of the parameter.
+Denote this function by $\mathcal{L}(p;y)$.
+The idea is to find the value $p$ that maximizes $\mathcal{L}(p;y)$.
+For example, if we have two values $p_1,p_2$ and we have
+$\mathcal{L}(p_1;y)&gt;\mathcal{L}(p_2;y)$, then
+$p_1$ is more plausible than $p_2$, there is more chance
+the data was generated by $p_1$ than by $p_2$.
+The maximum of this likelihood function is called the
+maximum likelihood estimator.</p>
+<p>For $n$ i.i.d. Bernoulli random variables,
+the likelihood function is</p>
+<p>$$\mathcal{L}(p;y)=\prod_{i=1}^n p^{y_i}\left(1-p\right)^{1-y_i}$$</p>
+<p>or equivalently
+$$p^{s_n}\left(1-p\right)^{n-s_n},$$
+where $ s _n = \sum _{i=1} ^n y _i .$</p>
+<p>We illustrate this function below.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e">## define the likelihood function</span>
+f <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(p,y){
+  p<span style="color:#a6e22e">^sum</span>(y) <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span><span style="color:#f92672">-</span>p)<span style="color:#a6e22e">^</span>(<span style="color:#a6e22e">length</span>(y) <span style="color:#f92672">-</span> <span style="color:#a6e22e">sum</span>(y))
+}
+p_hat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">mean</span>(y) <span style="color:#75715e"># maximum likelihood estimator</span>
+
+<span style="color:#75715e">## plot the likelihood function</span>
+<span style="color:#a6e22e">plot</span>(<span style="color:#66d9ef">NA</span>, xlim <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>), ylim<span style="color:#f92672">=</span><span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">7e-3</span>), 
+     xlab <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;p&#34;</span>, ylab <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;likelihood function&#34;</span>,
+     main <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Maximum likelihood estimator of Bernoulli distribution&#34;</span>,
+     cex.main <span style="color:#f92672">=</span> <span style="color:#ae81ff">.9</span>)
+<span style="color:#a6e22e">grid</span>()
+<span style="color:#a6e22e">curve</span>(<span style="color:#a6e22e">f</span>(p,y),from <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>,to <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, xname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;p&#34;</span>,
+      lwd <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>, add <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>, col <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;gray30&#34;</span>)
+<span style="color:#a6e22e">points</span>(x <span style="color:#f92672">=</span> p, y <span style="color:#f92672">=</span> <span style="color:#a6e22e">f</span>(p,y), pch <span style="color:#f92672">=</span> <span style="color:#ae81ff">17</span>, col <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;#990000&#34;</span>, cex <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.5</span>)
+<span style="color:#a6e22e">points</span>(x <span style="color:#f92672">=</span> p_hat, y <span style="color:#f92672">=</span> <span style="color:#a6e22e">f</span>(p_hat,y), pch <span style="color:#f92672">=</span> <span style="color:#ae81ff">17</span>, col <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;#009999&#34;</span>, cex <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.5</span>)
+<span style="color:#a6e22e">legend</span>(<span style="color:#e6db74">&#34;topright&#34;</span>, legend <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;Parameter&#34;</span>,<span style="color:#e6db74">&#34;Estimator&#34;</span>), 
+       col <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;#990000&#34;</span>,<span style="color:#e6db74">&#34;#009999&#34;</span>), pch <span style="color:#f92672">=</span> <span style="color:#ae81ff">17</span>, pt.cex <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.5</span>,
+       bty <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;n&#34;</span>)
+</code></pre></div><p><!-- raw HTML omitted --></p>
+<p>We clearly see the likelihood function is a concave function
+(how would you verify this analytically?), so one way
+to compute its maximum is to find the point
+such that the slope of the function is zero.
+It is generally more convenient to work with the
+log-likelihood function $\ell(p;y)=\log(\mathcal{L}(p,y))$.
+Taking the logarithm does not change the maximum.
+The first derivative of the log-likelihood is</p>
+<p>$$\frac{ \partial \ell(p;y) }{ \partial p} = \frac{s _n}{p} - \frac{ n - s _n}{1-p}.$$</p>
+<p>Solving $\partial\ell(p;y)/\partial p = 0$ leads to
+the unique solution $ \hat{p} = s _n / n$
+(if $0 &lt; s _n / n &lt; 1$).</p>
+<h3 id="mle-for-logistic-regression">MLE for logistic regression</h3>
+<p>For the logistic regression, the computations are slightly
+more involved. Suppose you observe $n$ binary data,
+the likelihood function is
+$$\mathcal{L}(w;y,X)=\prod_{i=1}^n\sigma(t_i)^{y_i}\left(1-\sigma(t_i)\right)^{1-y_i}.$$
+Similarly, le log-likelhood is given by</p>
+<p>$$\ell(w;y,X) = \sum _{i=1} ^{n} y _{i} \log\left(\frac{\sigma(t _{i})}{ 1 - \sigma(t _{i})}\right) + \log\left(1-\sigma(t _{i})\right),$$</p>
+<p>where
+$$\sigma(t _{i}) = \frac{1}{ 1 + \exp( -x _{i}w)}$$</p>
+<p>and $x _i$ is the ith row of $X$ (row-vector). Some manipulations
+lead to a simpler expression:
+$$\ell(w;y,X) = \sum _{i=1} ^{n} y _{i} x _{i} w - \sum _{i=1} ^{n} \left(1+e ^{x _{i} w}\right).$$
+The gradient of the log-likelihood function
+is given by
+$$\frac{\partial}{\partial w} \ell(w;y,X)
+= \sum _{i=1} ^n y _i x _i ^T - \sum _{i=1} ^n \frac{e ^{x _i w}}{1+e ^{x _i w}}x _i ^T.$$
+It is possible to simplify this expression with
+the following matrix notation
+$$ \frac{\partial}{\partial w}\ell(w;y,X)
+= X ^T ( y - \sigma _n (t)),$$
+where $\sigma _n (t)$ is a vector with ith element
+$\sigma(t _i)$.</p>
+<p>In the case of the Bernoulli distribution, we were
+able to find the zero of gradient analytically.
+Here for the logistic regression, it is impossible
+so we will use optimisation techniques. Generally,
+optimisers are programmed for minising a function
+so we need to consider the negative log-likelihood
+instead, that is simply putting a minus sign in the above
+calculations.</p>
+<p>Before optimising, let&rsquo;s first program these functions</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e">## negative log-likelihood</span>
+nll <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(w,X,y){
+  xw <span style="color:#f92672">&lt;-</span> X <span style="color:#f92672">%*%</span> w
+  <span style="color:#f92672">-</span> y <span style="color:#f92672">%*%</span> xw <span style="color:#f92672">+</span> <span style="color:#a6e22e">sum</span>(<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">exp</span>(xw)))
+}
+
+<span style="color:#75715e">## sigmoid function</span>
+sigmoid <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(t){
+  <span style="color:#ae81ff">1</span> <span style="color:#f92672">/</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">exp</span>(<span style="color:#f92672">-</span>t))
+}
+
+<span style="color:#75715e">## gradient</span>
+grad_nll <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(w,X,y){
+  xw <span style="color:#f92672">&lt;-</span> X <span style="color:#f92672">%*%</span> w
+  <span style="color:#a6e22e">t</span>(X) <span style="color:#f92672">%*%</span> (<span style="color:#a6e22e">sigmoid</span>(xw) <span style="color:#f92672">-</span> y)
+}
+</code></pre></div><p>In R, there is an <code>optim</code> function from that <code>stats</code> library
+that allows to make optimisation.</p>
+<p>Recall that we are interested in the <code>titanic</code> dataset
+so we use the following data, taking from the logistic fit:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">X <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">model.matrix</span>(fit_logistic2)
+y <span style="color:#f92672">&lt;-</span> fit_logistic2<span style="color:#f92672">$</span>y
+</code></pre></div><p><code>optim</code> is equipped with different routines; check the help <code>help(optim)</code>
+and for example this <a href="https://en.wikipedia.org/wiki/Maximum_likelihood_estimation#Iterative_procedures">page</a> for some explanations.
+Here we use the BFGS algorithm (Broyden-Fletcher-Goldfarb-Shanno).</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">opt_bfgs <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">optim</span>(par <span style="color:#f92672">=</span> <span style="color:#a6e22e">rep</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">6</span>), fn <span style="color:#f92672">=</span> nll, gr <span style="color:#f92672">=</span> grad_nll,
+                  method <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BFGS&#34;</span>, y <span style="color:#f92672">=</span> y, X <span style="color:#f92672">=</span> X)
+opt_bfgs
+</code></pre></div><p>Few comments:</p>
+<ol>
+<li><code>par</code>: a starting value is required, here we set $w^{(0)}=0$.</li>
+<li><code>fn</code>: the objective function (negative log-likelihood).</li>
+<li><code>gr</code>: (optional) the gradient.</li>
+<li><code>method</code>: the choice of algorithm.</li>
+<li><code>y,X</code>: the specific extra argument necessary for <code>nll()</code> and <code>grad_nll()</code>.</li>
+</ol>
+<p>The output is</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#f92672">$</span>par
+[1]  <span style="color:#ae81ff">3.147127868</span> <span style="color:#ae81ff">-0.835901451</span> <span style="color:#ae81ff">-2.759108265</span> <span style="color:#ae81ff">-0.256122427</span> <span style="color:#ae81ff">-0.088817088</span>
+[6]  <span style="color:#ae81ff">0.003413478</span>
+
+<span style="color:#f92672">$</span>value
+[1] <span style="color:#ae81ff">408.3751</span>
+
+<span style="color:#f92672">$</span>counts
+function gradient 
+      <span style="color:#ae81ff">43</span>       <span style="color:#ae81ff">14</span> 
+
+<span style="color:#f92672">$</span>convergence
+[1] <span style="color:#ae81ff">0</span>
+</code></pre></div><p>We see:</p>
+<ol>
+<li><code>par</code>: the values that minises <code>nll()</code> found by the algorithm.</li>
+<li><code>value</code>: the value of the objective function when evaluated at <code>par</code>.</li>
+<li><code>counts</code>: the number of time the algorithm evaluated the different functions.</li>
+<li><code>convergence</code>: a value of <code>0</code> indicates the algorithm converged.</li>
+</ol>
+<p>Now let&rsquo;s compare with what <code>glm</code> obtained:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">cbind</span>(<span style="color:#a6e22e">coef</span>(fit_logistic2),
+      opt_bfgs<span style="color:#f92672">$</span>par,
+      <span style="color:#a6e22e">abs</span>(<span style="color:#a6e22e">coef</span>(fit_logistic2)<span style="color:#f92672">-</span>opt_bfgs<span style="color:#f92672">$</span>par))
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">                   [,<span style="color:#ae81ff">1</span>]         [,<span style="color:#ae81ff">2</span>]         [,<span style="color:#ae81ff">3</span><span style="color:#a6e22e">]
+</span><span style="color:#a6e22e"></span>(Intercept)  <span style="color:#ae81ff">3.14734995</span>  <span style="color:#ae81ff">3.147127868</span> <span style="color:#ae81ff">2.220822e-04</span>
+Pclass      <span style="color:#ae81ff">-0.83599490</span> <span style="color:#ae81ff">-0.835901451</span> <span style="color:#ae81ff">9.345216e-05</span>
+Sexmale     <span style="color:#ae81ff">-2.75942799</span> <span style="color:#ae81ff">-2.759108265</span> <span style="color:#ae81ff">3.197251e-04</span>
+SibSp       <span style="color:#ae81ff">-0.25635020</span> <span style="color:#ae81ff">-0.256122427</span> <span style="color:#ae81ff">2.277746e-04</span>
+Parch       <span style="color:#ae81ff">-0.08876554</span> <span style="color:#ae81ff">-0.088817088</span> <span style="color:#ae81ff">5.154484e-05</span>
+Fare         <span style="color:#ae81ff">0.00341621</span>  <span style="color:#ae81ff">0.003413478</span> <span style="color:#ae81ff">2.731828e-06</span>
+</code></pre></div><p>The third column indicates the absolute difference,
+not too far!</p>
+<p>Note that <code>glm</code> is based on a different algorithm,
+the iterative reweighted least squares (check <a href="https://en.wikipedia.org/wiki/Logistic_regression#Iteratively_reweighted_least_squares_(IRLS)">that</a> for more infos).
+Want to go further and program the logistic regression using <code>Rcpp</code>,
+check the example <a href="https://cran.r-project.org/web/packages/RcppNumerical/vignettes/introduction.html#a-more-practical-example">here</a></p>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/tutorials/workflow/" title="Project-oriented workflow"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/homeworks/" title="Homeworks" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1636712690"></script>
+    <script src="/js/perfect-scrollbar.min.js?1636712690"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1636712690"></script>
+    <script src="/js/jquery.sticky.js?1636712690"></script>
+    <script src="/js/featherlight.min.js?1636712690"></script>
+    <script src="/js/highlight.pack.js?1636712690"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1636712690"></script>
+    <script src="/js/learn.js?1636712690"></script>
+    <script src="/js/hugo-learn.js?1636712690"></script>
+
+    <link href="/mermaid/mermaid.css?1636712690" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1636712690"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+
+  </body>
+</html>
+

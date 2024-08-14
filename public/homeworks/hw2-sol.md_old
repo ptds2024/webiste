@@ -1,0 +1,228 @@
++++
+title = "homework #2 solutions"
+date =  2018-08-17T16:40:55+02:00
+weight = 21
++++
+
+The objectives of this homework assignment are the followings:
+
+- Learn how program effectively using if/else and iterations statements; 
+- Become familiar with using data frame objects and mapping packages;  
+- Constructing a portfolio;  
+- Become familiar with GitHub and using it as a collaborative tool.
+
+This project **must** be done using GitHub and respect the following requirements:
+
+- All members of the group must commit at least once.  
+- All commit messages must be reasonably clear and meaningful.  
+- Your GitHub repository must include at least one issue containing some form of TO DO list. 
+
+You can create one or several RMarkdown files to answer the following problems:
+
+#### Problem 1: Fuzz Bizz solution
+
+Below is a possible solution for FuzzBizz. The `%%` represents the modulus operator. 
+
+```{toml}
+numbers <- character(1000)
+for (x in 1:1000) {
+  if ((x%%3==0 && x%%5==0)){
+    numbers[x] <- "FuzzBizz"
+  }else if (x%%3==0){
+    numbers[x] <- "Fuzz"
+  }else if (x%%5==0){
+    numbers[x] <- "Bizz"
+  }else{
+    numbers[x] <- x
+  }
+}
+numbers 
+```
+
+#### Problem 2: Map solution 
+-**(a)** To do so, simply use `addTiles` and `leaflet` in the following way: 
+
+```{toml}
+map <- addTiles(leaflet())
+map
+```
+
+-**(b)** Adding the `addMarkers` option leads to the solution: 
+
+```{toml}
+map <- addMarkers(addTiles(leaflet()), lng=6.581188, lat=46.522451, popup="Université de Lausanne")
+map
+```
+
+Note that it is also possible to use the pipe operator `%>%` in order to obtain a "cleanier" expression. If you are familiar with those, then you can, most of the time with leaflet, use it conveniently. Here is how the solution would look like: 
+
+```{toml}
+map <- leaflet() %>% addTiles() %>% addMarkers(lng=6.581188, lat=46.522451, popup="Université de Lausanne")
+map
+```
+
+-**\(c)** First, one needs to create the map from the `maps` package. Then, one should use it as a data argument in the `leaflet` function and colour accordingly. 
+
+```{toml}
+mapItaly = map("italy", fill = TRUE, plot = FALSE)
+addPolygons(addTiles(leaflet(data=mapItaly)), fillColor=topo.colors(10, alpha=NULL), stroke=FALSE)
+```
+
+-**(d)** One obtains the solution by first loading the data, restricting the scope of the dataset to events with magnitude larger than 4.0 and by finally making use of the `addPolygons` function in order to colour the regions. 
+
+```{toml}
+library(ETAS)
+data <- italy.quakes
+data <- filter(data, data$mag >= 4.0)
+addMarkers(addPolygons(addTiles(leaflet(data=mapItaly)), fillColor=topo.colors(10, alpha=NULL), stroke=FALSE), ~data$long, data$lat, popup = ~as.character(data$mag))
+```
+
+-**(e)** A messy yet correct solution is to embed the functions of interest with their respective parameters in the following way: 
+
+```{toml}
+addLayersControl(addCircles(addCircles(addPolygons(addTiles(leaflet(data=mapItaly)), fillColor=topo.colors(10, alpha=NULL), stroke=FALSE), ~data[data[,"mag"]<5.0,]$long, ~data[data[,"mag"]<5.0,]$lat, ~10^data[data[,"mag"]<5.0,]$mag/10, stroke = F, group="Below 5.0"), ~data[data[,"mag"]>=5.0,]$long, ~data[data[,"mag"]>=5.0,]$lat, ~10^data[data[,"mag"]>=5.0,]$mag/10, stroke = F, group="Above 5.0"), overlayGroups=c("Below 5.0", "Above 5.0"), options = layersControlOptions(collapsed = FALSE))
+```
+With the help of the pipe operator, this is much nicer to write. Can you think of the actual solution in this case? Think of the way the functions are embedded into one another in order to come up with a cleanier solution. 
+
+#### Problem 3: Homogeneous Poisson processes solution
+
+-**(a)** We simply code the given algorithm by using an if-else statement and by then creating a loop to generate the points of our process. We then proceed to plot it. 
+
+```{toml}
+process <- data.frame()
+n <- rpois(n=1, lambda=10)
+
+if(n == 0){
+  process <- NA
+}else{
+  for(i in 1:n){
+    xi <- runif(1)
+    yi <- runif(1)
+    process <- rbind(process, cbind(xi, yi))
+  }
+}
+
+plot(x=process$xi, y=process$yi, xlab="x", ylab="y", main="Realisation of a homogeneous Poisson process")
+```
+
+-**(b)** Again, we start by coding the algorithm as provided:  
+
+```{toml}
+r <- 2
+lambda <- 8
+n <- rpois(n=1, lambda=(pi*r^2*lambda))
+
+R <- c()
+th <- c()
+if(n == 0){
+  process <- NA
+}else{
+  for(i in 1:n){
+    R[i] <- r*sqrt(runif(1))
+    th[i] <- 2*pi*runif(1)
+  }
+  R.sort <- sort(R)
+  process <- data.frame(cbind(R.sort, th))
+}
+```
+Once we have done this, we can plot our realisations along with a circle delimiting the space $C$ as follow: 
+
+```{toml}
+x <- process[,1]*cos(process[,2])
+y <- process[,1]*sin(process[,2])
+
+center.x = 0
+center.y = 0
+theta=seq(0, 2*pi, length=500)
+
+plot(x,y, asp=1, main="Realisation of a homogeneous Poisson process \n in a circle")
+lines(x=r*cos(theta)+center.x, y=r*sin(theta)+center.y)
+```
+
+#### Problem 4: portfolio construction solution 
+In this solution, we make use of matrices to represent the omega, variance, and mean of the investment. Using indexing, we can compute omega star and place it into the matrix of omega. After computing the matrices, we remove the NA values that were not used in the computation. We then compute the minimum profile using the condition the client gave us. 
+
+```{toml}
+library(quantmod)
+library(rvest)
+sp500 <- read_html("https://en.wikipedia.org/wiki/List_of_S%26P_500_companies")
+
+sp500 %>% 
+html_nodes(".text") %>% 
+html_text() -> ticker_sp500
+
+SP500_symbol <- ticker_sp500[(1:499)*2+1]
+SP500_symbol[SP500_symbol == "BRK.B"] <- "BRK-B"
+SP500_symbol[SP500_symbol == "BF.B"] <- "BF-B"
+
+
+today <- Sys.Date()
+three_year_ago <- seq(today, length = 2, by = "-3 year")[2]
+getSymbols(SP500_symbol, from = three_year_ago, to = today)
+
+nb_sym <- length(SP500_symbol)
+
+omega_invest <- var_invest <- mean_invest <- matrix(NA, nb_sym, nb_sym)
+dimnames(omega_invest) <- dimnames(var_invest) <- dimnames(mean_invest) <- list(SP500_symbol, SP500_symbol)
+
+for (i in 1:(nb_sym-1)){
+  for (j in (i+1):nb_sym){
+    stock1 <- get(SP500_symbol[i])
+    stock2 <- get(SP500_symbol[j])
+    
+    Ra <- na.omit(ClCl(stock1))
+    Rn <- na.omit(ClCl(stock2)) 
+    
+    # Estimation of mu and Sigma
+    Sigma <- cov(cbind(Ra, Rn))
+    mu <- c(mean(Ra), mean(Rn))
+    
+    # Compute omega^*
+    omega_invest[i, j] <- omega_star <- (Sigma[2, 2] - Sigma[1, 2])/(Sigma[1, 1] + Sigma[2, 2] - 2*Sigma[1, 2])
+    
+    # Compute investment expected value and variance
+    mean_invest[i, j] <- omega_star*mu[1] + (1 - omega_star)*mu[2]
+    var_invest[i, j] <- omega_star^2*Sigma[1,1] + (1 - omega_star)^2*Sigma[2,2] + 
+    2*omega_star*(1 - omega_star)*Sigma[1,2]
+  }
+}
+
+var_graph <- sqrt(na.omit(as.vector(var_invest)))
+exp_graph <- na.omit(as.vector(mean_invest))
+omega_graph <- na.omit(as.vector(omega_invest))
+cond <- omega_graph < 0.6 & omega_graph > 0.4
+risk_possible = var_graph[cond]
+exp_possible = exp_graph[cond]
+# minimum risk 
+min_risk = which.min(risk_possible)
+
+col_possible = hcl(h = seq(15, 375, length = 3), l = 65, c = 100, alpha = 0.1)[2]
+col_possible_leg = hcl(h = seq(15, 375, length = 3), l = 65, c = 100, alpha = 0.4)[2]
+col_best = hcl(h = seq(15, 375, length = 3), l = 65, c = 100, alpha = 1)[1]
+
+plot(NA, xlim = range(risk_possible), 
+ylim = range(exp_possible), 
+xlab = "Investement Daily Risk",
+ylab = "Investement Daily Expected Returns")
+grid()
+points(risk_possible, exp_possible, pch = 16, col = col_possible[1])
+points(risk_possible[min_risk], exp_possible[min_risk], pch = 16, col = col_best[1])
+
+legend("topright", c("Possible portfolio","Min-variance portfolio"),
+pch = 16, col = c(col_possible_leg[1], col_best[1]),
+bty = "n")
+
+min_var = min(risk_possible)
+row_col = which(sqrt(var_invest)==min_var, arr.ind=TRUE)
+stock1 = row.names(var_invest)[row_col[1]]
+stock2 = row.names(var_invest)[row_col[2]]
+amount1 = omega_invest[row_col[1], row_col[2]]
+amount2 = 1-amount1
+```
+
+
+In case some of you were wondering, here is the "best" portfolio obtained for the last question of homework 2:
+ 
+- `r stock1` (`r amount1*100` %) and `r stock2` (`r amount2*100`%); so indeed not Walmart
+- Mean return of `r exp_possible[min_risk]` 
+- Risk of `r risk_possible[min_risk]` 

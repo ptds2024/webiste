@@ -1,0 +1,128 @@
++++
+title = "homework #2"
+date =  2018-08-17T16:40:55+02:00
+weight = 20
++++
+
+{{% notice warning %}}
+**Deadline: 2020-10-18**  
+To submit your work, simply push it to the dedicated repository created for your group.  
+We will grade only the latest files prior to the deadline. Any ulterior modifications are pointless. 
+{{% /notice %}}
+
+The objectives of this homework assignment are the followings:
+
+- Learn how program effectively using if/else and iterations statements; 
+- Become familiar with using data frame objects and mapping packages;  
+- Constructing a portfolio;  
+- Become familiar with GitHub and use it as a collaborative tool.
+
+This project **must** be done using GitHub and respect the following requirements:
+
+- All members of the group must commit at least once.  
+- All commit messages must be reasonably clear and meaningful.  
+- Your GitHub repository must include at least one issue containing some form of TO DO list. 
+
+You can create one or several RMarkdown files to answer the following problems:
+
+#### Problem 1: Fuzz Bizz
+Write a program that prints the numbers from 1 to 1000, but with the following specific requirement:
+
+- for multiples of three, print "Fuzz" instead of the number; 
+- for the multiples of five print "Bizz" instead of the number; 
+- for numbers which are multiples of both three and five print "FuzzBizz" instead of the number.
+
+An example of the output would be: 
+
+```{toml}
+1, 2, Fuzz, 4, Bizz, Fuzz, 7, 8, Fuzz, Bizz, 11, Fuzz, 13, 14, FuzzBizz, 16, 17, Fuzz, 19, Bizz, Fuzz, 22, 23, Fuzz, Bizz, 26, Fuzz, 28, 29, FuzzBizz, 31, 32, Fuzz, 34, Bizz, Fuzz, ...
+```
+#### Problem 2: Map
+This exercise is designed as a guided tutorial to the basic functions of the `leaflet` and `maps` packages that allow to draw maps and display information on them. First of all, if not done already, install `leaflet` and `maps` and load them into `R`. 
+
+- **(a)** Create a simple map by using the `addTiles()` function with first argument `leaflet()` and display the resulting map.
+- **(b)** On the map from point a, add a marker with the help of the `addMarkers` function at $(\text{lon}, \text{lat})=(6.581188,46.522451)$ with a popup message specifying "Université de Lausanne". 
+- **\(c)** Using the `map` function from the `maps` package, display a map of Italy with different colours for the various regions in this country, using the `addPolygons` function. 
+- **(d)** Download and load the `ETAS` package in order to retrieve some earthquakes data for Italy, that are stored in the aforementioned package as `italy.quakes` (assign it to a variable into your `R`. Filter for earthquakes of magnitude greater than (or equal to) 4.0  on the Richter scale and add markers and popups on the various localisations of these earthquakes with their respective magnitudes. 
+- **(e)** On the previous map in point d, instead of simple markers, add circle for each of the quake using the `addCircles` function and let the size of the circle vary with the magnitude of the quake. Also, use `addLayersControl` to distinguish on the map between two types of earthquakes (groups): the ones with magnitude less than 5.0 and the one with magnitude greater than 5.0, using the `overlayGroups` parameter.  Your final map should look like the following: 
+
+<img src="/homeworks/map.png" alt="map" width="600px"/> 
+
+#### Problem 3: Homogeneous Poisson processes
+
+Recall that a general stochastic process $\\{X(t); t \in \mathcal{T}\\}$ is a collection indexed by $\mathcal{T}$ of random variables defined on a specific and common probability space. A counting process $\\{N(t); t \geq 0\\}$ is a specific type of stochastic process, where $N(t) \geq 0$ for all $t \geq 0$, $N(t)$ is an integer and for $s \leq t$, we have that $N(s) \leq N(t)$. We can view the increment $N(t)-N(s)$, for $s < t$, as the number of events occurring in the interval $(s,t]$. 
+
+-**(a)** A counting process$\\{N(t); t \geq 0\\}$ is said to be a two-dimensional homogeneous Poisson process on $A \subseteq \mathbb{R}^2$ with rate $\lambda \geq 0$ if: 
+
+1) the number of events in any region $B \subseteq A$ is Poisson distributed with mean $\lambda |B|$, where $|B|$ denotes the volume (area in 2-dimensional settings) of $B$; 
+
+2) the number of events occurring in any finite set of nonoverlapping regions are mutually independent. 
+
+We first start by generating a Poisson process in the unit square $[0,1]^2$, so that $|[0,1]^2|=1$. In order to do so, note that the general algorithm to generate this simple Poisson process is the following: 
+
+1) Generate $n \sim \text{Poisson}(\lambda)$;
+
+2) If $n=0$, stop. Otherwise, generate $n$ independent events $(x_i, y_i)$, $i \in 1,2,\ldots,n$ such that $x_i \sim \text{Unif}(0,1)$ and $y_i \sim \text{Unif}(0,1)$;
+
+3) Produce the collection of points $(x_i, y_i)$ for $i \in 1,2,\ldots,n$ as the realisations of your process. 
+
+Using $\lambda=10$, produce a plot of one realisation of the above process. 
+
+-**(b)** It is also possible to generate a homogeneous Poisson process on a circle $C=\lbrace (x,y): x^2+y^2 \leq r^2 \rbrace$ of radius $r$, thanks to a nice result due to Lewis and Shedler (1979). The algorithm works as follow: 
+
+1) Generate $n \sim \text{Poisson}(\pi r^2 \lambda)$;
+
+2) If $n=0$, stop. Otherwise, generate $u_1 \sim \text{Unif}(0,1),\ldots u_n \sim \text{Unif}(0,1)$ independently; 
+
+3) Set $ R_1 = r \sqrt{u_1}, \ldots , R_n = r \sqrt{u_n} $; 
+
+4) Sort the $ R _{i}$ in ascending order to obtain the order statistics $R _{(1)}, \ldots, R _{(n)} $;
+
+5) Generate $ u _{n+1} \sim \text{Unif}(0,1), \ldots, u _{2n} \sim \text{Unif}(0,1)$ independently;
+
+6) Set $ \theta _1 = 2 \pi u _{n+1} $, $ \ldots$, $ \theta _n = 2 \pi u _{2n} $;
+
+7) Produce $ (R _{(1)}, \theta _1), \ldots, (R _{(n)}, \theta _n) $ as the realisations of your process.
+
+Note that, in the above, the realisations are in terms of the radii $R _{(i)}$ and corresponding angles $\theta _i$. 
+
+For $r=2$, $\lambda=8$ draw the realisations of such a process.
+
+#### Problem 4: portfolio construction
+Suppose that you are working in an investment firm company as a quantitative analyst. Your boss gives you the task of creating a portfolio for one of your clients. The client wants to find the portfolio with the smallest variance that satisfies the following constraints:
+  
+- Invest exactly $1,000,000.  
+- Invest in exactly two stocks of the S&P500 index.  
+
+Therefore, your boss requires that you compute all possible portfolios that satify the client's constraints, represent them graphically as (for example) in the graph below and find the weight of the best (i.e. minimum variance) portfolio. 
+
+<img src="/homeworks/port_hw2.png" alt="map" width="600px"/>
+
+In order to complete this task, the boss tells you to use **3 years** of historical data. The boss also mentions that the function `get()` could be useful for this project and provides you with the example below (what a really nice boss!): 
+
+```{toml}
+library(quantmod)
+library(rvest)
+sp500 <- read_html("https://en.wikipedia.org/wiki/List_of_S%26P_500_companies")
+
+sp500 %>% 
+  html_nodes(".text") %>% # "td:nth-child(1) .text" should be used instead
+  html_text() -> ticker_sp500
+
+SP500_symbol <- ticker_sp500[(1:499)*2+1]
+
+# Replace "." by "-"
+SP500_symbol <- gsub(".","-",SP500_symbol,fixed=T)
+
+# Specify timing
+tot_length <- 3 * 365
+today <- Sys.Date()
+seq_three_years <- seq(today,by=-1,length.out=tot_length)
+three_year_ago <- seq_three_years[tot_length]
+
+# Retrieve data for a stock
+i <- 1
+getSymbols(SP500_symbol[i],from=three_year_ago,to=today)
+stock_price <- ClCl(get(SP500_symbol[i]))
+```
+

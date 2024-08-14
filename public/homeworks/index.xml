@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Homeworks on Programming tools for data science</title>
+    <link>https://ptds.samorso.ch/homeworks/</link>
+    <description>Recent content in Homeworks on Programming tools for data science</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Mon, 11 Oct 2021 00:00:00 +0200</lastBuildDate><atom:link href="https://ptds.samorso.ch/homeworks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Schedule</title>
+      <link>https://ptds.samorso.ch/homeworks/schedule/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ptds.samorso.ch/homeworks/schedule/</guid>
+      <description>Each homework is graded and should be finished in due time; a penalty is applied for late submission (see the syllabus).
+gantt dateFormat YYYY-MM-DD title Schedule for the homeworks section Homeworks homework 0 :active, des1, 2021-09-27, 1d homework 1 :active, des2, 2021-10-04, 2021-10-10 homework 2 :active, des3, 2021-10-11, 2021-10-24 project proposal:crit, active, des4, 2021-11-01, 6d homework 3 :active, des5, 2021-10-25, 2021-11-14 homework 4 :active, des6, 2021-11-15, 2021-11-28 section Deadlines homework 1 :crit, 2021-10-10, 1d homework 2 :crit, 2021-10-24, 1d project proposal:crit, 2021-11-07, 1d homework 3 :crit, 2021-11-14, 1d homework 4 :crit, 2021-11-28, 1d  </description>
+    </item>
+    
+    <item>
+      <title>homework #0</title>
+      <link>https://ptds.samorso.ch/homeworks/hw0/</link>
+      <pubDate>Fri, 17 Aug 2018 16:40:51 +0200</pubDate>
+      
+      <guid>https://ptds.samorso.ch/homeworks/hw0/</guid>
+      <description>Homework generously provided by the Data Science in Business Analytics class.
+This homework is optional and is not graded.
+ In this optional tutorial you will get an overview of the basic programming concepts in R and main data types. Just enough to get you up and running essential R code. However, for true &amp;ldquo;beginners&amp;rdquo;, we highly recommend going through Advanced R - Chapter &amp;lsquo;Foundations&amp;rsquo; from which the content of this assignment is mainly (mostly) inspired by.</description>
+    </item>
+    
+    <item>
+      <title>homework #1</title>
+      <link>https://ptds.samorso.ch/homeworks/hw1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ptds.samorso.ch/homeworks/hw1/</guid>
+      <description>Deadline: 2021-10-10 11:59pm
+To submit your work, simply push it to the dedicated repository created for your group.
+We will grade only the latest files prior to the deadline. Any ulterior modifications are pointless.
+ The objectives of this homework assignment are the followings:
+ Build your own RMarkdown document. Master different aspects of RMarkdown syntax. Become familiar with GitHub as a collaborative tool.  This homework must be accomplished using GitHub and respect the following requirements:</description>
+    </item>
+    
+    <item>
+      <title>homework #1 solutions</title>
+      <link>https://ptds.samorso.ch/homeworks/hw1-sol/</link>
+      <pubDate>Mon, 11 Oct 2021 00:00:00 +0200</pubDate>
+      
+      <guid>https://ptds.samorso.ch/homeworks/hw1-sol/</guid>
+      <description>The objectives of this homework assignment are the followings:
+ Build your own RMarkdown document. Master different aspects of RMarkdown syntax. Become familiar with GitHub as a collaborative tool.  Note the following requirements:
+ All members of the group must commit at least once. All commit messages must be reasonably clear and meaningful. Your GitHub repository must include at least one issue containing some form of TO DO list.  In your repository, create a RMarkdown file called hw1.</description>
+    </item>
+    
+    <item>
+      <title>homework #2</title>
+      <link>https://ptds.samorso.ch/homeworks/hw2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://ptds.samorso.ch/homeworks/hw2/</guid>
+      <description>Deadline: 2021-10-24 11:59pm
+To submit your work, simply push it to the dedicated repository created for your group.
+We will grade only the latest files prior to the deadline. Any ulterior modifications are pointless.
+ The objectives of this homework assignment are the followings:
+ Learn how program effectively using if/else and iterations statements; Become familiar with using data frame objects and mapping packages; Constructing a portfolio; Become familiar with GitHub and use it as a collaborative tool.</description>
+    </item>
+    
+    <item>
+      <title>homework #3</title>
+      <link>https://ptds.samorso.ch/homeworks/hw3/</link>
+      <pubDate>Fri, 17 Aug 2018 16:40:57 +0200</pubDate>
+      
+      <guid>https://ptds.samorso.ch/homeworks/hw3/</guid>
+      <description>Deadline: 2021-11-14 11:59pm To submit your work, simply push it to the dedicated repository created for your group.
+We will grade only the latest files prior to the deadline. Any ulterior modifications are pointless.
+ The objectives of this homework assignment are the followings:
+ Become competent at programming effectively using if/else and iterations statements; Learn how to program effectively using functions and think like a programmer; Improve your collaborative skills via GitHub.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.85.0" />
+    <meta name="description" content="This website provides the support for the class Programming tools in data science given at the Faculty of Business and Economics (HEC Lausanne) of the University of Lausanne in Fall (currently 2021)">
+<meta name="author" content="Samuel Orso">
+
+    <link rel="shortcut icon" href="https://www.unil.ch/favicon.ico" type="image/x-icon" />
+<link rel="icon" href="https://www.unil.ch/favicon.ico" type="image/x-icon" />
+
+    <title>homework #3 :: Programming tools for data science</title>
+
+    
+    <link href="/css/nucleus.css?1636712690" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1636712690" rel="stylesheet">
+    <link href="/css/hybrid.css?1636712690" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1636712690" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1636712690" rel="stylesheet">
+    <link href="/css/auto-complete.css?1636712690" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1636712690" rel="stylesheet">
+    <link href="/css/theme.css?1636712690" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1636712690" rel="stylesheet">
+    
+      <link href="/css/theme-green.css?1636712690" rel="stylesheet">
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1636712690"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+    <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-176152424-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+  </head>
+  <body class="" data-url="/homeworks/hw3/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+	<img src="https://raw.githubusercontent.com/SMAC-Group/ptds2018_website/master/data/hec_logo_white.png" alt="hec_logo" height="80" width="155">
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1636712690"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1636712690"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/ptds.samorso.ch\/";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1636712690"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/syllabus/" title="Syllabus" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/syllabus/">
+          Syllabus
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/syllabus/general/" title="General information" class="dd-item ">
+        <a href="/syllabus/general/">
+        General information
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/syllabus/coursedescr/" title="Course description" class="dd-item ">
+        <a href="/syllabus/coursedescr/">
+        Course description
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/syllabus/grading/" title="Grading" class="dd-item ">
+        <a href="/syllabus/grading/">
+        Grading
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/syllabus/communication/" title="Communication" class="dd-item ">
+        <a href="/syllabus/communication/">
+        Communication
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/syllabus/material/" title="Material" class="dd-item ">
+        <a href="/syllabus/material/">
+        Material
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/syllabus/final/" title="Convinced?" class="dd-item ">
+        <a href="/syllabus/final/">
+        Convinced?
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/lectures/" title="Lectures" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/lectures/">
+          Lectures
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/lectures/additional/" title="Supplementary material" class="dd-item ">
+        <a href="/lectures/additional/">
+        Supplementary material
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/tutorials/" title="Tutorials" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/tutorials/">
+          Tutorials
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/tutorials/r_install/" title="R/RStudio installation and setup" class="dd-item ">
+        <a href="/tutorials/r_install/">
+        R/RStudio installation and setup
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/tutorials/style/" title="R Coding Style Guide" class="dd-item ">
+        <a href="/tutorials/style/">
+        R Coding Style Guide
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/tutorials/workflow/" title="Project-oriented workflow" class="dd-item ">
+        <a href="/tutorials/workflow/">
+        Project-oriented workflow
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/tutorials/logistic/" title="Logistic regression" class="dd-item ">
+        <a href="/tutorials/logistic/">
+        Logistic regression
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/homeworks/" title="Homeworks" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/homeworks/">
+          Homeworks
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/homeworks/schedule/" title="Schedule" class="dd-item ">
+        <a href="/homeworks/schedule/">
+        Schedule
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/homeworks/hw0/" title="homework #0" class="dd-item ">
+        <a href="/homeworks/hw0/">
+        homework #0
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/homeworks/hw1/" title="homework #1" class="dd-item ">
+        <a href="/homeworks/hw1/">
+        homework #1
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/homeworks/hw1-sol/" title="homework #1 solutions" class="dd-item ">
+        <a href="/homeworks/hw1-sol/">
+        homework #1 solutions
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/homeworks/hw2/" title="homework #2" class="dd-item ">
+        <a href="/homeworks/hw2/">
+        homework #2
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/homeworks/hw3/" title="homework #3" class="dd-item active">
+        <a href="/homeworks/hw3/">
+        homework #3
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/project/" title="Project" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/project/">
+          Project
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/project/output/" title="Project" class="dd-item ">
+        <a href="/project/output/">
+        Project
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/project/proposal/" title="Proposal" class="dd-item ">
+        <a href="/project/proposal/">
+        Proposal
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/group/" title="Groups" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/group/">
+          Groups
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/group/groups/" title="Composition" class="dd-item ">
+        <a href="/group/groups/">
+        Composition
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/resources/" title="Resources" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/resources/">
+          Resources
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://github.com/ptds2020/"><i class='fab fa-github'></i> Github repo</a>
+              </li>
+          
+              <li> 
+                  <a class="padding" href="https://shiny.samorso.ch/fillingform/"><i class='fa fa-fw fa-users'></i> Discussion forum</a>
+              </li>
+          
+              <li> 
+                  <a class="padding" href="https://smac-group.github.io/ds/"><i class='fa fa-fw fa-book'></i> Lectures</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Programming tools in data science</a> > <a href='/homeworks/'>Homeworks</a> > homework #3
+          
+         
+          
+         
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              homework #3
+            </h1>
+          
+
+        
+
+
+
+
+<div class="notices warning" ><p><strong>Deadline: 2021-11-14 11:59pm</strong>
+To submit your work, simply push it to the dedicated repository created for your group.<br>
+We will grade only the latest files prior to the deadline. Any ulterior modifications are pointless.</p>
+</div>
+
+<p>The objectives of this homework assignment are the followings:</p>
+<ul>
+<li>Become competent at programming effectively using if/else and iterations statements;</li>
+<li>Learn how to program effectively using functions and think like a programmer;</li>
+<li>Improve your collaborative skills via GitHub.</li>
+</ul>
+<p>This project <strong>must</strong> be done using GitHub and respect the following requirements:</p>
+<ul>
+<li>All members of the group must commit at least once.</li>
+<li>All commit messages must be reasonably clear and meaningful.</li>
+<li>Your GitHub repository must include at least one issue containing some form of TO DO list.</li>
+</ul>
+<p>You can create one or several RMarkdown files to answer the following problems:</p>
+<h4 id="problem-1-finding-area-of-a-shape">Problem 1: Finding area of a shape</h4>
+<p>In this problem, we consider a Monte-Carlo approach for approximating the area of a shape $S$ (that you assume you do not know). To start with, let us consider a unit square, which has an area of 1, and consider the shape $S$, which is an intersection of three regions $S = D_1 \cap D_2 \cap D_3 $, where</p>
+<p>$$D_1: x^2 + y^2 &gt; 0.5^2; \quad D_2: (x - 0.5)^2 + (y - 0.5)^2 &lt; 0.5^2; \quad D_3: y &gt; x - 0.5.$$</p>
+<p>Let us assume that the x and y coordinates are uniformly distributed between 0 and 1, that is $X\sim\mathcal{U}(0, 1)$ and $Y\sim\mathcal{U}(0, 1)$. We consider the following method for estimating the area of this circle:</p>
+<ol>
+<li>Simulate $B$ coordinates $[X_i,; Y_i]^T$, $i=1,\dots,B$.</li>
+<li>Create a vector of Booleans $Z$, such that $Z_i = 1$ if $(X_i, Y_i) \in S$ and 0 otherwise.</li>
+<li>Estimate $\mathrm{area}(S)$ as follows:</li>
+</ol>
+<p>$$\text{area of the square } \times \frac{\text{number of points in the } S}{\text{total number of points}} = \frac{\sum_i^B Z_i}{B}.$$</p>
+<p><em>If you want to understand why this method works, see the bottom of the page.</em></p>
+<p><strong>a)</strong> Create a function that approximates $\mathrm{area}(S)$ following the above recipe. Your function should be called <code>find_area()</code> and should have three arguments:</p>
+<ul>
+<li><code>B</code>: the number of points for the approximation with defaults value = 5000,</li>
+<li><code>seed</code>: a positive integer that controls the generation of random numbers with default value = 10,</li>
+<li><code>make_plot</code>: a Boolean value that control whether or a not a graph should be made (see below for details and use FALSE as default).</li>
+</ul>
+<p>Your function should look like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">find_area &lt;- function(B = 5000, seed = 10, make_plot = FALSE){
+  # Control seed
+  set.seed(seed)
+  
+  # Simulate B points
+  point = matrix(runif(2*B, 0, 1), nrow = B, ncol = 2)
+  
+ ...
+ 
+ return(area_hat)
+}
+</code></pre></div><p>When enabling the plot by setting <code>make_plot = TRUE</code>, the function <code>find_area()</code> should produce a graph with a square, the shape of $S$ inside, and the <code>B</code> points with two distinct colors according to whether the point is inside or outside the circle. See below for an example.
+<!-- raw HTML omitted --></p>
+<p><strong>b)</strong> Verify that by running <code>find_area(B=10^6, make_plot = TRUE)</code> the function returns the value $0.571741$. Compare it to the real area of the shape $S$ (calculate it using simple school formulas).</p>
+<h4 id="problem-2-satellite-navigation-system">Problem 2: Satellite Navigation System</h4>
+<p>Global Navigation Satellite Systems or GNSS are systems with global coverage that uses satellites to provide autonomous geo-spatial positioning. They allow small electronic receivers to determine their location (longitude, latitude, and altitude/elevation) to high precision (within a few meters) using time signals (i.e. &ldquo;distances&rdquo; informally speaking) transmitted along a line of sight by radio from satellites. Currently, there exist only three global operational GNSS, the United States' Global Positioning System (GPS), Russia&rsquo;s GLONASS and the European Union&rsquo;s Galileo. However, China is in the process of expanding its regional BeiDou Navigation Satellite System into a global system by 2020. Other countries, such as India, France or Japan are in the process of developing regional and global systems.</p>
+<p>Obviously, GNSS are very complex systems and in this exercise we will consider an <strong>extremely simplified</strong> setting to illustrate the basic concepts behind satellite positioning. If you are interested in learning more about GNSS, an excellent introduction to get started this topics can be found here: &ldquo;<a href="http://www.borealisprecision.com/pdf/An_Introduction_to_GNSS.pdf">An Introduction to GNSS</a>&rdquo;.</p>
+<p>For simplicity, let us start by assuming that the earth is a motionless perfect circle in a two-dimensional space. Next, we assume that three motionless GNSS-like satellites are placed around the earth. The position of these satellites is assumed to be known and we will assume that there are synchronized (i.e. they all have the same &ldquo;time&rdquo;). Our simplified setting can be represented as follows:
+<!-- raw HTML omitted --></p>
+<p>Now, suppose that you are somewhere on our flat earth with a GNSS-like receiver. The way you will be able to compute your position with such system is by first determining the distance (or a closely related notion) between yourself and with each satellite. The computation of these distances is done by comparing the time at which a signal is emitted by a satellite and the time at which it is received by your device. More precisely, let $t_e^{(i)}$ and $t_r^{(i)}$ denote, respectively, the times at which a signal is emitted and received for satellite $i$. To simplify further, we assume that $t_e^{(i)}$ (also known as the clock in each satellite) is &ldquo;perfect&rdquo; (this point may surprise you, but in reallity the time in the satellite are subjected to random variations). However, the clock in our device is not perfect and $t_r^{(i)}$ is estimated by $\hat{t}_r^{(i)}$ which represents the time recorded by the receiver device. Since all satellites are assumed to be synchronized, we can write $$\hat{t}_r^{(i)} = t_r^{(i)} + \Delta t,$$ where $\Delta t$ is the time difference, it is the same for all satellites as it does not depend on $i$. Using this simple result as well as the times $\hat{t}_r^{(i)}$ and ${t}_e^{(i)}$, we can compute the estimated distance between us and the $i$-th satellite as follows:$$ \hat{d}_i = c\left[(t_r^{(i)} + \Delta t) - t_e^{(i)}\right] = c\left(t_r^{(i)}  - t_e^{(i)}\right) + c \Delta t = d_i + \varepsilon,$$ where $c$, $d_i$ and $\varepsilon$ denote, respectively, the speed of the signal, the true distance between us and the $i$-th satellite, and the measurement error. This setting can be represented as follows:
+<!-- raw HTML omitted -->
+Next, we let $(x_i, y_i), , i = 1,2,3$ denote the position of satellite $i$. The coordinates of these points are given in the table below:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">$i$</th>
+<th style="text-align:left">$x_i$</th>
+<th style="text-align:left">$y_i$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">-300</td>
+<td style="text-align:left">300</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">300</td>
+<td style="text-align:left">300</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">-300</td>
+</tr>
+</tbody>
+</table>
+<p>Finally, we let $(x_0, y_0)$ denotes our position on earth. Then, the distance between our position and the $i$-th satellite is given by $$ d_i = \sqrt{\left(x_i - x_0\right)^2 + \left(y_i - y_0\right)^2}. $$
+Unfortunately, $d_i$ is unknown (if our position were known, why using a GNSS system). Instead, we can express the distance as $d_i = \hat{d}_i - \varepsilon$. We obtain following system of equations:
+$$ \begin{aligned} (x_1 - x_0)^2 + (y_1 - y_0)^2 &amp;= (\hat{d}_1 - \varepsilon)^2 \\  (x_2 - x_0)^2 + (y_2 - y_0)^2 &amp;= (\hat{d}_2 - \varepsilon)^2 \\  (x_3 - x_0)^2 + (y_3 - y_0)^2 &amp;= (\hat{d}_3 - \varepsilon)^2, \end{aligned} $$
+where $\boldsymbol{\theta}=[x_0;;y_0;;\varepsilon]^T$ are the three unknown quantities we wish to estimate and $\hat{d}_i,;i=1,2,3,$ are the observations.</p>
+<p>While there exists several methods to solve such estimation problem, the most common is known as the &ldquo;least-square adjustement&rdquo; and will be used in this problem. It is given by: $$ \hat{\boldsymbol{\theta}} = \operatorname{argmin}_{\boldsymbol{\theta}} ; \sum_1^3 ; \left[\left(x_i - x_0\right)^2 + \left(y_i - y_0\right)^2 - \left(\hat{d}_i - \varepsilon\right)^2\right]^2. $$</p>
+<p><strong>a)</strong> Write a general function named <code>get_position()</code> that takes as a single argument a vector of observed distances and returns an object with an appropriate class having custom <code>summary</code> and <code>plot</code> functions. For example, suppose we observe the vector of distances $$ \hat{\mathbf{d}} = [\hat{d}_1;;\hat{d}_2;;\hat{d}_3]^T = [449.2136;;284.8427;;414.3106]^T, $$ then you should replicate (approximately) the following results:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">position = get_position(c(453.2136, 288.8427, 418.3106))
+summary(position)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">## The estimated position is:
+## X = 99.9958
+## Y = 100.003
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">plot(position)
+</code></pre></div><!-- raw HTML omitted -->
+<p>Note that inside the <code>get_position()</code> function, you need to estimate the positions $\hat{x}$ and $\hat{y}$. You can use the R function <code>optim</code> for this purpose. It has the syntax:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">optim(par = starting_values, fn = my_objective_function, arg1 = arg1, ..., argN = argN)
+</code></pre></div><p>The arguments are:</p>
+<ul>
+<li><code>starting_values</code>: the starting values for the optimization, here a vector of three values corresponding to $\hat{\boldsymbol{\theta}}$.</li>
+<li><code>my_objective_function</code>: the objective function, here the one we defined above. It <strong>must</strong> have $\boldsymbol\theta$ as one of its arguments.</li>
+<li><code>arg1</code> to <code>argN</code>: additional arguments for the objective functions.</li>
+</ul>
+<p><strong>b)</strong> Generalize the function <code>get_position()</code> of the point <strong>a)</strong> to accept also a matrix of observed distances (but keep only one argument!).<br>
+<strong>c)</strong> Verify that the function you wrote at the point <strong>b)</strong> display the same graph</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">position = get_position(dist_mat)
+summary(position)
+</code></pre></div><!-- raw HTML omitted -->
+<p>where the matrix inputed is</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">##           [,1]     [,2]     [,3]
+##  [1,] 458.9474 337.1013 363.1112
+##  [2,] 337.0894 458.9355 363.0993
+##  [3,] 442.5835 442.5835 283.9493
+##  [4,] 520.1845 520.1845 184.0449
+##  [5,] 534.1411 499.0299 191.3455
+##  [6,] 499.1322 534.2434 191.4479
+##  [7,] 542.0904 470.4216 212.7515
+##  [8,] 470.4070 542.0758 212.7369
+##  [9,] 541.6032 429.4569 250.9978
+## [10,] 429.4120 541.5583 250.9528
+</code></pre></div><h4 id="problem-3">Problem 3</h4>
+<p>This exercise is dedicated to code your own &ldquo;logistic regression&rdquo; using any arbitrary probability function and the <code>optim()</code> function.</p>
+<p>Recall the tutorial on <a href="https://ptds.samorso.ch/tutorials/logistic/">logistic regression</a>, where a probability of <em>success</em> is defined by the sigmoid function $\sigma(t) = (1 + e^{-t})^{-1}$. Now, to determine the probability of <em>success</em> we consider the CDF of a standard Cauchy distribution</p>
+<p>$$\sigma(t) = \frac{1}{\pi} \arctan (t) + \frac{1}{2}.$$</p>
+<p>Similarly to the tutorial, further we express $t$ as a linear combination of known covariates $x$ and unknown coefficients $w$:</p>
+<p>$$t = Xw.$$</p>
+<p>We will compare a standard <code>glm</code> fit for the <code>titanic</code> data set with <code>family = binomial(link = &quot;logit&quot;)</code> to our own model.
+Your goal is to code the log likelihood function $\mathcal{L}$ of our model, fit the standard <code>glm</code> model for the training set (follow the tutorial), fit the Cauchy model, and finally, compare the results on the test set.</p>
+<p><strong>(a)</strong> Load the <code>titanic</code> data set. Create a training set <code>data_train</code> being $70%$ of the data, and a test set <code>data_test</code> - the remaining $30%$. Keep only the <code>Survived, Pclass, Sex, SibSp, Parch, Fare</code> columns. Fit the logistic regression on the training set with <code>Survived</code> being the response variable.</p>
+<p><strong>(b)</strong> Code the negative log likelihood function <code>nll(w, X, y)</code>, where <code>w</code> is a vector of unknown coefficients; <code>X</code> is a matrix $n \times 5$ of the observations; <code>y</code> is the response variable. Use optimisation function <code>optim()</code> with target <code>nll</code> and <code>method = &quot;BFGS&quot;</code>.</p>
+<p><strong>(c)</strong> For both models calculate the survival probability of <code>data_test</code>. Using a threshold of 0.5, predict the survival as $\text{Survive} = \text{Prob} &gt; 0.5$. Create two confusion matrices using, for example, <code>table()</code>, and compare the accuracies of both models. Which model performs better?</p>
+<h4 id="problem-4">Problem 4</h4>
+<p>This exercise aims to be a guided tutorial towards building your own (simple) neural network. It is entirely based on <a href="https://towardsdatascience.com/how-to-build-your-own-neural-network-from-scratch-in-python-68998a08e4f6">James Loy&rsquo;s tutorial</a> on how to do so on Python.</p>
+<p>A neural network is, briefly speaking, a way to map input data to output data using mathematical functions along in order to do so. In a neural network, you have inputs, call them $x$, constituting the input layer; you have an arbitrary number of hidden variables in an arbitrary number of hidden layers; an output layer, call it $\hat{y}$; a set of weights $\mathbb{W}$ and biases $\mathbb{b}$ and, finally, an activation function $\sigma$ for each hidden layer, that &ldquo;transports&rdquo; your inputs by scaling them with the weights and adding noises with the biases to finally give you your output layer.</p>
+<p>For simplicity in this tutorial, we will consider the biases to be equally 0 and the network to only have a single hidden layer. The following picture, taking again from <a href="https://towardsdatascience.com/how-to-build-your-own-neural-network-from-scratch-in-python-68998a08e4f6">James Loy&rsquo;s tutorial</a>, should graphically clarify the situation.</p>
+<!-- raw HTML omitted -->
+<p>The output of a neural network with one hidden layer is given by considering the following function: $$\hat{y} = \sigma(W_2 \sigma(W_1 x + b_1) + b_2)$$ and since we consider the biases to be 0, in our case, it boils down to specify $$\hat{y} = \sigma(W_2 \sigma(W_1 x)). $$</p>
+<p>We will also impose a parametric form for $\sigma$ by taking the sigmoid function, which possesses nice properties in this context (among which non-linearity and differentiability), which is given by: $$\sigma(x) = \frac{1}{1+e^{-x}}.$$</p>
+<p>We will start by imposing some random values to the weights and we will update them by &ldquo;training&rdquo; the neural network, which consists of two steps: the feedforward step and the back propagation step:</p>
+<ul>
+<li>The feedforward step consists of computing $\hat{y}$ and to consequently compute the loss function (or cost function) which measures the difference between the observed output and its computed value;</li>
+<li>The back propagation consists of updating the weights $W_1$ and $W_2$ in order to reduce the value of the loss computed in the first step.</li>
+</ul>
+<p>Graphically, the following picture should clarify the situation, taken again from <a href="https://towardsdatascience.com/how-to-build-your-own-neural-network-from-scratch-in-python-68998a08e4f6">James Loy&rsquo;s tutorial</a>:</p>
+<!-- raw HTML omitted -->
+<p>Now that the setting is clarified, we will build the neural network step by step.</p>
+<p><strong>(a)</strong> Create a matrix containing the following 4 observations (inputs):</p>
+<!-- raw HTML omitted -->
+<p>and a vector containing the following 4 outcomes, corresponding to the 4 observations above:</p>
+<!-- raw HTML omitted -->
+<p><strong>(b)</strong> Generate a 3x4 matrix of weights ($W_1$), each uniformly generated between 0 and 1. Then, create a list storing the state of the neural net (to be updated in the training of the neural net), which consists of the inputs, the weights ($W_1$ and $W_2$ (noting that $W_2$ is a vector of 4 random uniform weights)), the outputs and the predicted outputs (create it as a 4x1 matrix with 0s as initial values).</p>
+<p><strong>(c)</strong> Create and store the sigmoid function (as a function of a generic <code>x</code>) into <code>R</code>. Then, create the derivative of this function.</p>
+<p><strong>(d)</strong> Create and store the loss function (as a function of a generic neural net as created in part b)) into <code>R</code>. For the purpose of this exercise, we assume that the loss (or cost) is simply the sum of the squared errors, i.e. $$\text{loss}(y, \hat{y})=\sum_{i=1}^n (\hat{y}-y)^2.$$</p>
+<p><strong>(e)</strong> Create the feedforward function (as a function of a generic neural net as created in part b)). To do so, use the sigmoid function from point c): in particular, assign to the first layer of the neural net the value of the sigmoid of the matrix product of the input layer with the weights $W_1$. Then, assign to the output of the neural net the value of the sigmoid of the matrix product of the first layer of the neural net with the weights $W_2$. Note that the matrix multiplication is undertaken by using the operator <code>%*%</code> in <code>R</code>. Do the operations in the order mentioned.</p>
+<p><strong>(f)</strong> Create the back propagation function (as a function of a generic neural net as created in part b)). To do so, we will update the weights by a gradient descent-type procedure. This works as follow:</p>
+<ul>
+<li>Create the derivative of the loss function with respect to $W_2$: using the chain rule, it can be shown that this derivative is given by:</li>
+</ul>
+<p>$$ (\frac{1}{1+e^{-xW_1}})^T \times 2(\hat{y}-y) \cdot ( \frac{1}{1+e^{-W_2 \frac{1}{1+e^{-xW_1}}}} \cdot (1-\frac{1}{1+e^{-W_2 \frac{1}{1+e^{-xW_1}}}}) ) $$</p>
+<p>Hints: The above subscript $T$ denotes the transpose of the matrix (obtain it using the <code>t()</code> function in <code>R</code>). The $\times$ operator denotes a matrix product, whereas $\cdot$ denotes a regular multiplication. Obtain it by using Note that $\frac{1}{1+e^{-xW_1}}$ is the layer created using the <code>feedforward</code> function. Also, note that the last part is simply the sigmoid derivative evaluated at the output created using the <code>feedforward</code> function above. So both of these elements are stored in the neural net you input to the <code>backpropagation</code> function and therefore, the above derivative should not be that hard to write.</p>
+<ul>
+<li>Create the derivative of the loss function with respect to $W_1$: using the chain rule, it can be shown that this derivative is given by:</li>
+</ul>
+<p>$$ x \cdot ( 2(\hat{y}-y) \cdot ( \frac{1}{1+e^{-W_2 \frac{1}{1+e^{-xW_1}}}} \cdot (1-\frac{1}{1+e^{-W_2 \frac{1}{1+e^{-xW_1}}}}) \times (W_2)^T  ) \cdot (\frac{1}{1+e^{-xW_1}} \cdot (1-\frac{1}{1+e^{-xW_1}}) )$$</p>
+<p>The notation is as before. Note that $x$ is retrieved from the output of the neural net that is an argument of the function. Also note that $\frac{1}{1+e^{-xW_1}} \cdot (1-\frac{1}{1+e^{-xW_1}}) $ is the sigmoid derivative evaluated at the layer obtained above.</p>
+<p>Then, update weights1 by adding the derivative with respect to $W_1$ obtained above and update weights2 by adding the derivative with respect to $W_2$ also obtained above. Return the resulting neural net as an output of this function.</p>
+<p><strong>(g)</strong> &ldquo;Train&rdquo; the neural network: iterate <code>feedforward</code> and <code>backpropagation</code> 1500 times on the neural net created in b). Store the values of the loss function along the iterations to be able to plot it. Then display the predicted vs the actual observation.</p>
+<h4 id="technical-explanations-around-problem-1">Technical explanations around problem 1</h4>
+<p>To understand why the method presented indeed calculates the area of the shape, let us show that $$\mathbb{E}\left[Z_i\right] = \text{area}(S).$$
+To prove this result, we start by noticing that $f(x,y) = f_X (x) f_Y (y) = 1$ if $x\in[0, 1]$ and $y\in[0, 1]$ and 0 otherwise.</p>
+<p>Let $Z_i = 1$ if $(X_i, Y_i) \in S$ and 0 otherwise. Then, we obtain</p>
+<p>$$\mathbb{E}\left[Z_i\right] = \iint_S f(x, y) dx,dy = \iint_S dx,dy = \text{area}(S).$$</p>
+<p>Finally, to estimate the area of $S$ we perform the Monte-Carlo simulations to estimate $\mathbb{E}[Z_i]$.</p>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/homeworks/hw2/" title="homework #2"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/project/" title="Project" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1636712690"></script>
+    <script src="/js/perfect-scrollbar.min.js?1636712690"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1636712690"></script>
+    <script src="/js/jquery.sticky.js?1636712690"></script>
+    <script src="/js/featherlight.min.js?1636712690"></script>
+    <script src="/js/highlight.pack.js?1636712690"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1636712690"></script>
+    <script src="/js/learn.js?1636712690"></script>
+    <script src="/js/hugo-learn.js?1636712690"></script>
+
+    <link href="/mermaid/mermaid.css?1636712690" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1636712690"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+
+  </body>
+</html>
+

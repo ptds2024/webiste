@@ -1,0 +1,354 @@
++++
+title = "homework #3 solutions"
+date =  2018-08-17T16:40:55+02:00
+weight = 26
++++
+
+The objectives of this homework assignment are the followings:
+
+- Become competent at programming effectively using if/else and iterations statements; 
+- Learn how to program effectively using functions and think like a programmer;  
+- Improve your collaborative skills via GitHub.
+
+Note: 
+
+- All members of the group must commit at least once.  
+- All commit messages must be reasonably clear and meaningful.  
+- Your GitHub repository must include at least one issue containing some form of TO DO list. 
+
+You can create one or several RMarkdown files to answer the following problems:
+
+## Problem 1: Finding $\pi$
+
+```{toml}
+make_circle = function(center = c(0,0), radius = 1,  nb_step = 300, col = "darkblue", fill = NULL, lty = 1){
+  my_points = seq(from = 0, to = 2*pi, length.out = nb_step)
+  coords = cbind(radius*cos(my_points) + center[1], radius*sin(my_points) + center[2])
+  lines(coords, col = col, lty = lty)
+  if (!is.null(fill)){
+    polygon(c(coords[,1]), c(coords[,2]), col = fill, border = NULL)
+  }
+}
+
+make_square = function(bottom_left = c(-1,-1), side = 2, col = "darkblue", fill = NULL){
+  lines(c(bottom_left, bottom_left), c(bottom_left + side, bottom_left), col = col)
+  lines(c(bottom_left + side, bottom_left), c(bottom_left + side, bottom_left + side), col = col)
+  lines(c(bottom_left + side, bottom_left + side), c(bottom_left, bottom_left + side), col = col)
+  lines(c(bottom_left, bottom_left + side), c(bottom_left, bottom_left), col = col)
+  if (!is.null(fill)){
+    polygon(c(bottom_left, bottom_left+side, bottom_left+side, bottom_left), c(bottom_left, bottom_left, bottom_left+side, bottom_left+side), border = NULL, col = fill)
+  }
+}
+
+inside_unit_circle = function(x){
+  # Compute squared distance from center
+  d = x[1]^2 + x[2]^2
+  (d < 1)
+}
+
+find_pi = function(B = 5000, seed = 10, make_plot = TRUE){
+  # Control seed
+  set.seed(seed)
+  
+  # Simulate B points
+  point = matrix(runif(2*B, -1, 1), B, 2)
+  
+  # Compute the number of points inside unit circle
+  nb_inside = apply(point, 1, inside_unit_circle)
+  pi_hat = sum(nb_inside)/B
+  
+  # Make plot
+  if (make_plot){
+    plot(NA, xlim = c(-1.1,1.1), ylim = c(-1.1,1.1), xlab = "x", ylab = "y")
+    make_square()
+    cols = hcl(h = seq(15, 375, length = 3), l = 65, c = 100, alpha = 0.2)[1:2]
+    grid()
+    for (i in 1:B){
+      points(point[i,1], point[i,2], pch = 16, col = cols[1 + nb_inside[i]])
+    }
+    make_circle()
+  }
+  
+  # return estimated value of pi
+  return(4*pi_hat)
+}
+```
+
+## Problem 2: Satellite Navigation System
+
+```{toml}
+is_on_earth = function(x0, y0){
+  sqrt(x0^2 + y0^2) < 200
+}
+
+get_distance = function(x0, y0, epsilon){
+  x = c(-300, 300, 0)
+  y = c( 300, 300, -300)
+  d = sqrt((x0 - x)^2 + (y0 - y)^2) + epsilon
+  return(d)
+}
+
+obj_gnss = function(theta, distance){
+  x = c(-300, 300, 0)
+  y = c( 300, 300, -300)
+  x0 = theta[1]
+  y0 = theta[2]
+  epsilon = theta[3]
+  sum(((x0 - x)^2 + (y0 - y)^2 - (distance - epsilon)^2)^2)
+}
+
+get_position = function(distance, start = rep(0, 3)){
+  if (is.matrix(distance)){
+    nb_points = dim(distance)[1]
+    results = matrix(NA, nb_points, 3)
+    for (i in 1:nb_points){
+      results[i,] = optim(start, obj_gnss, distance = distance[i,])$par[1:3]
+    }
+    class(results) = "gnssmat"
+  }else{
+    results = optim(start, obj_gnss, distance = distance)
+    results[[6]] = distance
+    names(results) = c(names(results)[1:5], "distance")
+    class(results) = "gnssvect"
+  }
+  results
+}
+
+plot.gnssvect = function(position, show.distance = FALSE, add = FALSE){
+  cols = hcl(h = seq(15, 375, length = 4), l = 65, c = 100)[1:3]
+  
+  if (add == FALSE){
+    cols_trans = hcl(h = seq(15, 375, length = 4), l = 65, c = 100, alpha = 0.75)[1:3]
+    plot(NA, xlim = c(-310, 310), ylim = c(-310, 310), xlab = "x", ylab = "y")
+    grid()
+    make_circle(fill = "lightgrey", radius = 200)
+    make_circle(radius = 20, center = c(-300, 300), col = "red", fill = cols[1])
+    make_circle(radius = 20, center = c(300, 300), col = "red", fill = cols[2])
+    make_circle(radius = 20, center = c(0, -300), col = "red", fill = cols[3])
+  
+    if (show.distance == TRUE){
+      make_circle(radius = position$distance[1], center = c(-300, 300), col = cols_trans[1])
+      make_circle(radius = position$distance[2], center = c(300, 300), col = cols_trans[2])
+      make_circle(radius = position$distance[3], center = c(0, -300), col = cols_trans[3])
+    }
+  }
+  points(position$par[1], position$par[2], pch = "x", cex = 1.3, col = "orange2")
+}
+
+
+plot.gnssmat = function(position){
+  cols = hcl(h = seq(15, 375, length = 4), l = 65, c = 100)[1:3]
+  cols_trans = hcl(h = seq(15, 375, length = 4), l = 65, c = 100, alpha = 0.75)[1:3]
+  plot(NA, xlim = c(-310, 310), ylim = c(-310, 310), xlab = "x", ylab = "y")
+  grid()
+  make_circle(fill = "lightgrey", radius = 200)
+  make_circle(radius = 20, center = c(-300, 300), col = "red", fill = cols[1])
+  make_circle(radius = 20, center = c(300, 300), col = "red", fill = cols[2])
+  make_circle(radius = 20, center = c(0, -300), col = "red", fill = cols[3])
+  
+  for (i in 1:dim(position)[1]){
+    points(position[i,1], position[i,2], pch = "x", cex = 1.3, col = "orange2")
+  }
+}
+
+summary.gnssvect = function(position){
+  cat("The estimated position is:\n")
+  cat("X = ")
+  cat(round(position$par[1],4))
+  cat("\n")
+  cat("Y = ")
+  cat(round(position$par[2],4))
+  cat("\n\n")
+}
+```
+
+#### Problem 3
+
+A direct transcription of the algorithm looks as follow: 
+
+```{toml }
+my.fun <- function(x){
+  y <- 2*x^2+5*x
+  return(y)
+}
+
+my.fun.deriv <- function(x){
+  y <- 4*x+5
+  return(y)
+}S
+
+eps <- 0.01
+
+brent.method <- function(a, b, f){
+  fa <- f(a)
+  fb <- f(b)
+  
+  if(fa*fb >= 0){
+    return("The root is not bracketed")
+  }
+  
+  if(abs(fa) < abs(fb)){
+    temp <- a
+    a <- b
+    b <- temp
+  }
+  
+  c <- a
+  mflag <- 1
+  
+  d <- Inf
+  s <- Inf
+  
+  while(f(b) != 0 | f(s) != 0 | abs(b-a)>eps){
+    
+    if(f(a) != f(c) && f(b) != f(c)){
+      s <- (a*f(b)*f(c))/((f(a)-f(b))*(f(a)-f(c)))+(b*f(a)*f(c))/((f(b)-f(a))*(f(b)-f(c)))+(c*f(a)*f(b))/((f(c)-f(a))*(f(c)-f(b)))
+    }else{
+      s <- b-f(b)*(b-a)/(f(b)-f(a))
+    }
+    
+    if((s<(3*a+b)/4 | s>b) | (mflag==1 && abs(s-b)>=abs(b-c)/2) | (mflag==0 && abs(s-b) >= abs(c-d)/2) | (mflag == 1 && abs(b-c)<abs(eps)) | (mflag==0 && abs(c-d)<abs(eps))){
+      s <- (a+b)/2
+      mflag <- 1
+    }else{
+      mflag <- 0
+    }
+    
+    fs <- f(s)
+    d <- c
+    c <- b
+    if(f(a)*fs < 0){
+      b <- s
+    }else{
+      a <- s
+    }
+    
+    if(abs(f(a)) < abs(f(b))){
+      temp <- a
+      a <- b
+      b <- temp
+    }
+  }
+  result <- ifelse(f(b)==0, b, s)
+  return(result)
+}
+```
+
+#### Problem 4
+
+**(a)**
+
+```{toml }
+# predictor variables
+X <- matrix(c(
+  0,0,1,
+  0,1,1,
+  1,0,1,
+  1,1,1
+),
+  ncol = 3,
+  byrow = TRUE
+)
+
+# observed outcomes
+y <- c(0, 1, 1, 0)
+
+# print the data so we can take a quick look at it
+cbind(X, y)
+``` 
+
+**(b)**
+
+```{toml}
+# generate a first series of weights
+rand_vector <- runif(ncol(X)*nrow(X))
+rand_matrix <- matrix(rand_vector, nrow=ncol(X), ncol=nrow(X), byrow=TRUE)
+
+# state of the neural net as trained
+neural_net <- list(input=X, weights1= rand_matrix, weights2=matrix(runif(4), ncol=1), y=y, output=matrix(rep(0, times=4), ncol=1))
+
+```
+
+**\(c)**
+
+```{toml}
+# activation function 
+sigmoid <- function(x){
+  1.0/(1.0+exp(-x))
+}
+
+# derivative of activation function
+sigmoid_derivative <- function(x){
+  x*(1.0-x)
+}
+```
+
+**(d)**
+
+```{toml}
+# loss function 
+loss_function <- function(nn){
+  sum((nn$y-nn$output)^2)
+}
+```
+
+**(e)**
+
+```{toml}
+# feedforward
+feedforward <- function(nn) {
+  nn$layer1 <- sigmoid(nn$input %*% nn$weights1)
+  nn$output <- sigmoid(nn$layer1 %*% nn$weights2)
+
+  nn
+}
+```
+
+**(f)**
+
+```{toml}
+# back propagation 
+# this step uses a gradient descent approach to updating the weights
+backprop <- function(nn){
+  d_weights2 <- (t(nn$layer1) %*% (2*(nn$y-nn$output)*sigmoid_derivative(nn$output)))
+  d_weights1 <- (2*(nn$y-nn$output)*sigmoid_derivative(nn$output)) %*% t(nn$weights2)
+  d_weights1 <- d_weights1 * sigmoid_derivative(nn$layer1)
+  d_weights1 <- t(nn$input) %*% d_weights1
+  
+  # update of the weights with Gradient Descent
+  nn$weights1 <- nn$weights1 + d_weights1
+  nn$weights2 <- nn$weights2 + d_weights2
+  
+  nn
+}
+```
+
+**(g)**
+
+```{toml}
+# number of times to perform feedforward and backpropagation
+n <- 1500
+
+# data frame to store the results of the loss function.
+# this data frame is used to produce the plot in the 
+# next code chunk
+loss_df <- data.frame(
+  iteration = 1:n,
+  loss = vector("numeric", length = n)
+)
+
+for (i in seq_len(1500)) {
+  neural_net <- feedforward(neural_net)
+  neural_net <- backprop(neural_net)
+
+  # store the result of the loss function.  We will plot this later
+  loss_df$loss[i] <- loss_function(neural_net)
+}
+
+# print the predicted outcome next to the actual outcome
+data.frame(
+  "Predicted" = round(neural_net$output, 3),
+  "Actual" = y
+)
+
+```

@@ -1,0 +1,320 @@
++++
+title = "homework #4 solutions"
+date =  2018-08-17T16:40:55+02:00
+weight = 31
++++
+
+As the Homework was written as a guided tutorial to creating a package and extending it with Rcpp procedures and a Shiny app, we will simply post here the final code that corresponds to the detailed steps in the Homework questions. 
+
+For the `pi.R` file: 
+
+```{toml}
+make_circle = function(center = c(0,0), radius = 1,  nb_step = 300, col = "darkblue", fill = NULL, lty = 1){
+  my_points = seq(from = 0, to = 2*pi, length.out = nb_step)
+  coords = cbind(radius*cos(my_points) + center[1], radius*sin(my_points) + center[2])
+  lines(coords, col = col, lty = lty)
+  if (!is.null(fill)){
+    polygon(c(coords[,1]), c(coords[,2]), col = fill, border = NULL)
+  }
+}
+
+make_square = function(bottom_left = c(-1,-1), side = 2, col = "darkblue", fill = NULL){
+  lines(c(bottom_left, bottom_left), c(bottom_left + side, bottom_left), col = col)
+  lines(c(bottom_left + side, bottom_left), c(bottom_left + side, bottom_left + side), col = col)
+  lines(c(bottom_left + side, bottom_left + side), c(bottom_left, bottom_left + side), col = col)
+  lines(c(bottom_left, bottom_left + side), c(bottom_left, bottom_left), col = col)
+  if (!is.null(fill)){
+    polygon(c(bottom_left, bottom_left+side, bottom_left+side, bottom_left), c(bottom_left, bottom_left, bottom_left+side, bottom_left+side), border = NULL, col = fill)
+  }
+}
+
+inside_unit_circle = function(x){
+  # Compute squared distance from center
+  d = (x[1])^2 + (x[2])^2
+  (d < 1)
+}
+
+#' @title Estimation of Pi
+#' @description Provide an estimation of the value of pi using simple probabilities
+#' @param B the number of points on which the estimation of pi is produced.
+#' @param seed the seed to be used for the random generation used in the procedure
+#' @return A \code{list} of the `pi` class made of the estimated value of pi and the points on which this estimation is based. In particular:
+#' \describe{
+#'     \item{estimated_pi}{The estimated value of pi}
+#'     \item{points}{A data frame with the points in the unit square on which the estimation is based and a dummy indicating whether the particular point is inside the unit circle or not.}
+#' }
+#' @importFrom stats runif
+#' @export
+#' @examples
+#' estimate_pi(B=5000, seed=10)
+estimate_pi = function(B = 5000, seed = 10){
+  # Control of the arguments
+  if(B%%1 != 0 | B <= 0){
+    stop("Argument B is invalid. Please specify a positive integer for this parameter.")
+  }
+
+  if(seed%%1 != 0 | seed <= 0){
+    stop("seed argument is invalid. Please specify a positive integer for this parameter.")
+  }
+
+
+  # Control seed
+  set.seed(seed)
+
+  # Simulate B points
+  points <- data.frame(
+    x = runif(n = B, min = -1, max = 1),
+    y = runif(n = B, min = -1, max = 1),
+    inside = rep(NA, B)
+  )
+
+  for(i in 1:B){
+    points$inside[i] <- ifelse(inside_unit_circle(cbind(points$x[i], points$y[i]))==TRUE, 1, 0)
+  }
+
+  # Compute the number of points inside unit circle
+  estimated_pi = 4*(sum(points$inside)/B)
+
+  # create a new list
+  rval <- list(
+    estimated_pi = estimated_pi,
+    points = points
+  )
+
+  # assign pi class to rval
+  class(rval) <- "pi"
+
+  # return rval
+  return(rval)
+}
+
+#' @title Plotting of the points serving in the estimation of pi
+#'
+#' @description Plotting procedure for an object of the `pi` class.
+#' @param x an object of `pi` class containing the points that serve to the estimation of the pi value.
+#' @return A plot of the unit square and the unit circle emphasising the points used in the estimation.
+#' @importFrom stats runif
+#' @importFrom graphics grid lines polygon
+#' @importFrom grDevices hcl
+#' @export
+#' @examples plot(x)
+plot.pi <- function(x){
+  #Control of the argument
+  if(class(x) != "pi"){
+    stop("Specify an argument of the pi class for this function. ")
+  }
+
+  points <- x[["points"]]
+  B <- nrow(points)
+
+  plot(NA, xlim = c(-1.1,1.1), ylim = c(-1.1,1.1), xlab = "x", ylab = "y")
+  make_square()
+  cols = hcl(h = seq(15, 375, length = 3), l = 65, c = 100, alpha = 0.2)[1:2]
+  grid()
+  for (i in 1:B){
+    points(points[i,1], points[i,2], pch = 16, col = cols[1 + points[i, 3]])
+  }
+  make_circle()
+}
+
+#' @title Estimation of Pi
+#' @description Provide an estimation of the value of pi using simple probabilities. The internal procedure uses C++ code.
+#' @param B the number of points on which the estimation of pi is produced.
+#' @param seed the seed to be used for the random generation used in the procedure
+#' @return A \code{list} of the `pi` class made of the estimated value of pi and the points on which this estimation is based. In particular:
+#' \describe{
+#'     \item{estimated_pi}{The estimated value of pi}
+#'     \item{points}{A data frame with the points in the unit square on which the estimation is based and a dummy indicating whether the particular point is inside the unit circle or not.}
+#' }
+#' @importFrom stats runif
+#' @export
+#' @examples
+#' estimate_pi(B=5000, seed=10)
+estimate_pi2 = function(B = 5000, seed = 10){
+  # Control of the arguments
+  if(B%%1 != 0 | B <= 0){
+    stop("Argument B is invalid. Please specify a positive integer for this parameter.")
+  }
+
+  if(seed%%1 != 0 | seed <= 0){
+    stop("seed argument is invalid. Please specify a positive integer for this parameter.")
+  }
+
+
+  # Control seed
+  set.seed(seed)
+
+  # Simulate B points
+  points <- data.frame(
+    x = runif(n = B, min = -1, max = 1),
+    y = runif(n = B, min = -1, max = 1),
+    inside = rep(NA, B)
+  )
+
+  points$inside <- ifelse(is_inside(as.matrix(cbind(points$x,points$y)))==TRUE, 1, 0)
+
+  # Compute the number of points inside unit circle
+  estimated_pi = 4*(sum(points$inside)/B)
+
+  # create a new list
+  rval <- list(
+    estimated_pi = estimated_pi,
+    points = points
+  )
+
+  # assign pi class to rval
+  class(rval) <- "pi"
+
+  # return rval
+  return(rval)
+}
+```
+
+For the `is_inside.cpp` file: 
+
+```{toml}
+#include <Rcpp.h>
+using namespace Rcpp;
+
+
+// [[Rcpp::export]]
+LogicalVector is_inside(NumericMatrix points){
+
+  LogicalVector inside(points.nrow());
+
+  for(int i(1); i<=points.nrow();i++){
+
+    double rad;
+    rad = pow(points(i-1, 0),2)+pow(points(i-1, 1),2);
+
+    if (rad < 1){
+      inside(i-1)=true;
+    }else{
+      inside(i-1)=false;
+    }
+  }
+
+  return inside;
+}
+
+```
+
+For the `ui.R` file: 
+
+```{toml}
+library(shiny)
+
+shinyUI(fluidPage(
+
+    titlePanel("Pi Estimation"),
+
+    sidebarLayout(
+
+        sidebarPanel(
+            selectInput("method", "Choose the desired method to estimate pi:", choices=c("estimated_pi", "estimated_pi2")),
+
+            numericInput("seed", "Enter the desired seed:", min=1, max=10^6, value=1),
+
+            sliderInput("B", "Enter the number of simulations", min=1, max=1000000, value=100)
+
+        ),
+
+        mainPanel(
+
+            plotOutput("plot"),
+
+            textOutput("time"),
+
+            textOutput("pi")
+        )
+    )
+))
+
+```
+
+For the `server.R` file: 
+
+```{toml}
+library(shiny)
+library(ptds2020hw4g0) # REPLACE N BY YOUR GROUP NUMBER AND DELETE THIS COMMENT
+
+shinyServer(function(input, output) {
+
+simulate <- reactive({
+    #simulate pi and measure the time here
+    if(input$method=="estimated_pi"){
+        estimate_pi(B = input$B, seed=input$seed)
+
+    }else{
+        estimate_pi2(B = input$B, seed=input$seed)
+    }
+
+})
+
+   output$plot <- renderPlot({
+       # plot pi
+      plot(simulate())
+   })
+
+   output$time <- renderText({
+      #extract the time of the execution
+      options(digits.secs=6)
+      start.time <- Sys.time()
+      simulate()
+      end.time <- Sys.time()
+      time <- end.time-start.time
+      paste("Execution time is:", time)
+    })
+
+   output$pi <- renderText({
+   # extract the estimated value
+    pival <- simulate()$estimated_pi
+   paste("Estimated pi is:", pival)
+    })
+
+})
+```
+
+For the `runDemo.R` file: 
+
+```{toml}
+#' @export
+runDemo <- function() {
+  # REPLACE N BY YOUR GROUP NUMBER AND DELETE THIS COMMENT
+  appDir <- system.file("shiny-examples", "pi", package = "ptds2020hw4g0")
+  if (appDir == "") {
+    stop(
+      "Could not find example directory. Try re-installing ptds2020hw4gN.",
+      call. = FALSE
+    )
+  }
+
+  shiny::runApp(appDir, display.mode = "normal")
+
+}
+
+```
+
+For the `DESCRIPTION` file: 
+
+```{toml}
+Package: ptds2020hw4g0
+Type: Package
+Title: Estimate Pi
+Version: 0.1.0
+Author: Surname Name
+Maintainer: Surname Name <XXXXXX@emailadress.com>
+Description: Functions to numerically estimate pi.
+License: GPL (>= 2)
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
+LinkingTo: 
+    Rcpp
+Imports: 
+    Rcpp,
+    shiny (>= 1.4.0)
+```
+
+The other files are automatically generated and updated when using the `devtools::document()` command. 
+

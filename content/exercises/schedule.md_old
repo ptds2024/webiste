@@ -1,0 +1,26 @@
++++
+title = "Schedule"
+weight = 5
++++
+
+Each homework is graded and should be finished in due time; a penalty is applied
+for late submission (see the [syllabus]({{<ref "syllabus/grading.md">}})).
+
+ {{<mermaid>}}
+ gantt
+       dateFormat YYYY-MM-DD
+       title Schedule for the homeworks
+       section Homeworks
+       homework 0   :active, des1, 2021-09-27, 1d
+       homework 1   :active, des2, 2021-10-04, 2021-10-10
+       homework 2   :active, des3, 2021-10-11, 2021-10-24
+       project proposal:crit, active, des4, 2021-11-01, 6d 
+       homework 3   :active, des5, 2021-10-25, 2021-11-14
+       homework 4   :active, des6, 2021-11-15, 2021-11-28
+       section Deadlines
+       homework 1   :crit, 2021-10-10, 1d
+       homework 2   :crit, 2021-10-24, 1d
+       project proposal:crit, 2021-11-07, 1d
+       homework 3   :crit, 2021-11-14, 1d
+       homework 4   :crit, 2021-11-28, 1d
+{{</mermaid>}}

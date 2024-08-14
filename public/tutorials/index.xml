@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tutorials on Programming tools for data science</title>
+    <link>https://ptds.samorso.ch/tutorials/</link>
+    <description>Recent content in Tutorials on Programming tools for data science</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Mon, 03 Sep 2018 11:17:38 +0200</lastBuildDate><atom:link href="https://ptds.samorso.ch/tutorials/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>R/RStudio installation and setup</title>
+      <link>https://ptds.samorso.ch/tutorials/r_install/</link>
+      <pubDate>Wed, 19 Sep 2018 13:10:39 +0200</pubDate>
+      
+      <guid>https://ptds.samorso.ch/tutorials/r_install/</guid>
+      <description>1. Installing R and RStudio 1.1 Installing R We start with installing the latest version of R (4.0.2 as of August 14, 2020). R itself is similar to an engine and chassis of a car, that is a bare minimum so that you can start driving. You need to follow steps below:
+ Visit https://cran.r-project.org and click on &amp;ldquo;Download R for &amp;hellip;&amp;rdquo;, where &amp;hellip; coresponds to your operating system. Depending on the operating system:  For Mac: download &amp;ldquo;R-4.</description>
+    </item>
+    
+    <item>
+      <title>R Coding Style Guide</title>
+      <link>https://ptds.samorso.ch/tutorials/style/</link>
+      <pubDate>Mon, 03 Sep 2018 11:18:38 +0200</pubDate>
+      
+      <guid>https://ptds.samorso.ch/tutorials/style/</guid>
+      <description>Good coding style is like using correct punctuation. You can manage without it, but it sure makes things easier to read. Hadley Wickham  Introduction A language is a tool that allows human beings to interact and communicate with each other. The clearer we express ourselves, the better an idea is transferred from our mind to the other. The same applies to programming languages: concise, clear and consistent codes are easier to read and/or edit.</description>
+    </item>
+    
+    <item>
+      <title>Project-oriented workflow</title>
+      <link>https://ptds.samorso.ch/tutorials/workflow/</link>
+      <pubDate>Mon, 03 Sep 2018 11:19:38 +0200</pubDate>
+      
+      <guid>https://ptds.samorso.ch/tutorials/workflow/</guid>
+      <description>It’s like agreeing that we will all drive on the left or the right. A hallmark of civilization is following conventions that constrain your behavior a little, in the name of public safety. Jenny Bryan  Introduction In this tutorial we will learn key aspects of making a good research project:
+ reproducible portable self-contained  In data science context, reproducibility means that the whole analysis can be recreated (or repeated) from the fresh start and raw data and get exactly the same results.</description>
+    </item>
+    
+    <item>
+      <title>Logistic regression</title>
+      <link>https://ptds.samorso.ch/tutorials/logistic/</link>
+      <pubDate>Thu, 08 Oct 2020 00:00:00 +0200</pubDate>
+      
+      <guid>https://ptds.samorso.ch/tutorials/logistic/</guid>
+      <description>The aim of this tutorial is to show how to write your own program for estimating a logistic regression. Note that the goal is purely educational since the logistic regression has already solid implementations in R.
+Introduction Logistic regression is one of most famous tool to model binary data. It is often introduced in under-graduate class of statistics and machine learning.
+For illustration, we fit a logistic regression on the titanic dataset.</description>
+    </item>
+    
+  </channel>
+</rss>
