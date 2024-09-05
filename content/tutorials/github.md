@@ -14,7 +14,7 @@ In this section we will install a distributed version-control system Git, regist
 -   Open the downloaded file and follow the proposed steps
 -   Configure your Git to let it know who you are. Do it by opening a command prompt or Terminal window on your computer and set "Your Name" and "[your_email\@unil.ch](mailto:your_email@unil.ch){.email}"
 
-```{toml}
+```
 git config --global user.name "Your Name"
 git config --global user.email "your_email@unil.ch"
 ```
@@ -23,7 +23,7 @@ Replace "Your Name" with your preferred name or the name you want to associate w
 
 *Check yourself:* You can verify your Git configurations by running the following command:
 
-```{toml}
+```
 git config --global --list
 ```
 

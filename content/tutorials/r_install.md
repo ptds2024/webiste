@@ -17,7 +17,7 @@ Install the latest version of `R` (4.3.1 as of September 5, 2023). `R` itself is
   
 *Note:* If you are a Mac user and you see similar to the following warning messages during the startup
 
-```{toml}
+```
 During startup - Warning messages:
 1: Setting LC_CTYPE failed, using "C"
 2: Setting LC_COLLATE failed, using "C"
@@ -58,7 +58,7 @@ We will install the free version:
 
 *Check yourself:* Open `RStudio` application. In the console you will see something as follows:
 
-```{toml}
+```
 R version 4.3.1 (2023-06-16 ucrt) -- "Beagle Scouts"
 Copyright (C) 2023 The R Foundation for Statistical Computing
 Platform: x86_64-w64-mingw32/x64 (64-bit)

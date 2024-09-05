@@ -37,7 +37,7 @@ The folder structure of R packages is a subject to a regulation of community (CR
 
 In contrast to R packages, there is no a single right folder structure for analysis projects. Below, I present a simple yet extensible folder structure for data analysis project, based on several references that cover this issue.
 
-```{toml}
+```
 name_of_project/
 |-  data
 |   |-  raw
@@ -80,7 +80,7 @@ While there are no rules how to organize your R code, there are several dos and 
 
     If there are many of them to install, it is better to create a file `configure.R`, that will install all packages:
     
-    ```{toml}
+    ```
     pkgs <- c("ggplot2", "plyr")
     install.packages(pkgs)
     ```
@@ -91,7 +91,7 @@ While there are no rules how to organize your R code, there are several dos and 
 
 - Use a character representation of the package name. 
 
-    ```{toml}
+    ```
     # Good 
     library("ggplot2")
     
@@ -105,7 +105,7 @@ While there are no rules how to organize your R code, there are several dos and 
 
 - Do not use `setwd("/Users/irudnyts/path/that/only/I/have")`. It is very unlikely that someone except you will have the same path to the project. Instead, use a package `here` and relative paths. The package `here` automatically recognizes the path to the project, and starts from there: 
 
-    ```{toml}
+    ```
     # Good
     library("here")
     
@@ -118,7 +118,7 @@ While there are no rules how to organize your R code, there are several dos and 
     
 - If your script involves random generation, then set a seed by `set.seed()` function to get the same random split each time: 
 
-    ```{toml}
+    ```
     # Good 
     set.seed(1991)
     x <- rnorm(100)
@@ -129,7 +129,7 @@ While there are no rules how to organize your R code, there are several dos and 
 
 - Do not repeat yourself (*DRY*). In R context it means the following: if the code repeated more than to times, you had better wrap it into a function.
 
-    ```{toml}
+    ```
     # Better
     fix_missing <- function(x) {
         x[x == -99] <- NA
@@ -208,7 +208,7 @@ Steps:
     
 4. Connect your local repo to your Github repo by 
     
-    ```{toml}
+    ```
     git remote add origin git@github.com:irudnyts/beer.git
     git push -u origin master
     ```
