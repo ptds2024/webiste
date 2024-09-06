@@ -39,7 +39,7 @@ It's crucial not to underestimate the workload associated with the project. Succ
 {{% /notice %}}
 
 ### Homeworks
-Throughout the semester, there are four homework assignments, each drawing from the course content. Each of these assignments is valued at 7.5 points. Detailed information about the specific requirements for these homework assignments can be found on the [homeworks page]({{<relref "homeworks/_index.md">}}).
+Throughout the semester, there are four homework assignments, each drawing from the course content. Each of these assignments is valued at 10 points. Detailed information about the specific requirements for these homework assignments can be found on the [homeworks page]({{<relref "homeworks/_index.md">}}).
 
 {{% notice warning %}}
 Late submission is penalized by 1 point every 24 hours after the deadline.

@@ -6,7 +6,7 @@ weight = 5
 ### Location and Time
 
 - **Location:** Anthropole/3032
-- **Time:** 8:30 - 12 (see the [lectures schedule]({{<relref "lectures/_index.md">}}) for more details)
+- **Time:** 9 - 12 (see the [lectures schedule]({{<relref "lectures/_index.md">}}) for more details)
 
 ### Course Websites
 
@@ -26,7 +26,7 @@ weight = 5
 
 #### Teaching Assistant 
 
-- **Name:** TBD
-- **Email:** 
-- **Office:** 
+- **Name:** Timofei Shashkov
+- **Email:** [timofei.shashkov@unil.ch](mailto:timofei.shashkov@unil.ch)
+- **Office:** Extranef/134
 - **Office Hours:** Appointment may be made upon request.
