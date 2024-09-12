@@ -1,0 +1,78 @@
+---
+title: "exercise 2"
+author: "Samuel Orso"
+date: "2024-09-08"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Lecture 7: Object-oriented programming
+
+1. Create a `summary` function for the class `pixel`. Verify the dispatch before and after implementing the summary function.
+2. Describe the difference between `t.test()` and `t.data.frame()`. What happens if you run the following code and why?
+    ```{r, eval=F}
+    x <- structure(1:10, class = "test")
+    t(x)
+    ```
+
+<ol start="3"> 
+<li>Read the documentation for <code class="remark-inline-code">UseMethod()</code> and explain why the following code returns the results that it does.</li></ol>
+```{r, eval=F}
+g <- function(x) {
+  x <- 10
+  y <- 10
+  UseMethod("g")
+}
+g.default <- function(x) c(x = x, y = y)
+
+x <- 1
+y <- 1
+g(y)
+```
+
+<ol start="4"><li> What do you expect this code to return? What does it actually return and why?</li></ol>
+```{r, eval=F}
+generic2 <- function(x) UseMethod("generic2")
+generic2.a1 <- function(x) "a1"
+generic2.a2 <- function(x) "a2"
+generic2.b <- function(x) {
+  class(x) <- "a1"
+  NextMethod()
+}
+
+generic2(structure(list(), class = c("b", "a2")))
+```
+
+## Lecture 8: Webscraping
+1. Play with [CSS Diner](https://flukeout.github.io/) to get familiar with CSS Selectors.
+2. Follow this [workflow](https://smac-group.github.io/ds/section-web-scraping.html#section-workflow). It uses the _SelectorGadget_. Propose an alternative solution using CSS selectors. You will probably need to use the developer tools of your browser.
+3. Repeat exercise 2. using `RSelenium` or `chromote`. 
+4. Extract the information from the World bank data example using regular expressions. 
+
+## Lecture 9: Shiny applications
+
+1. Develop the app seen in class by adding a second tab with a data table that reports summary statistics of the Old Faithful Geyser (see the UI of the [Buffon's needle example](https://smac-group.github.io/ds/section-shiny-web-applications.html#section-step-2-frontend))
+
+2. Draw the new reactive graph. Can you make the app more efficient? How?
+
+3. Play with different themes using the following code and checkout your console.
+```{r,eval=FALSE}
+library(shiny)
+library(bslib)
+thematic::thematic_shiny(font = "auto")
+
+ui <- fluidPage(
+  theme = bs_theme(),
+  ...
+)
+
+server <- function(input, output) {
+  bs_themer()
+  ...
+}
+
+shinyApp(ui, server)
+```
