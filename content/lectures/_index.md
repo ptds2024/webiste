@@ -20,7 +20,7 @@ Class-related discussion and questions will be on Slack. Do not forget to regist
 | 4 | 10 Oct | Exercise and Homework 1 | Timofei |
 | 5 | 17 Oct | [Object-oriented programming](https://ptds2024.github.io/class/lecture07_OOP), [Webscraping](https://ptds2024.github.io/class/lecture08_webscrap), [Shiny App](https://ptds2024.github.io/class/lecture09_shiny)  | Samuel | 
 | 6 | 24 Oct | Exercise and Homework 2 | Timofei |
-| 7 | 31 Oct | [Functional programming](https://ptds2024.github.io/class/lecture10_functional), [Shiny App](https://ptds2024.github.io/class/lecture09_shiny), [Package creation](https://ptds2024.github.io/class/lecture11_pkg) | Samuel |
+| 7 | 31 Oct | [Functional programming](https://ptds2024.github.io/class/lecture10_functional), [Package creation](https://ptds2024.github.io/class/lecture11_pkg), [Advanced shiny App](https://ptds2024.github.io/class/lecture12_shiny2), | Samuel |
 | 8 | 7 Nov | Exercise and Homework 3 | Timofei |
 | 9 | 14 Nov | Data science with R on Google Cloud | Samuel |
 | 9 | 21 Nov | TBA | Samuel |
