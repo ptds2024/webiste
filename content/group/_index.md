@@ -16,6 +16,6 @@ Below are the groups. The number for the group has no meaning. The order within 
 | Ambre Ferrari         | Urs Huerni           | Streuli Marvin               | Julien Keller       | Reisa Reci             | Hassan El Kira        | Jeff Macaraeg      |
 | Elwin Freudiger       | Hugo Troendel        | Mariel Gandarillas Calderon  | Antoine Magnin      | Lina Dernaika          | Luca Marini          | Julien Perini      |
 | Arnaud Aquin-Demierre | Anastasia Pushkarev   | Marcela Choque Quispe        | Robin Michel        | Andrea Danesi          | Steve Marcello       | Emma Antille       |
-| Olivier Dinh          | Valeriia Bilousko    | Sofia Daza Arandia           | Faber Bickerstaffe  | Yichen Liu             | Yanis Bougherara     | Herald Nakpil      |
+| Olivier Dinh          | Valeriia Bilousko    | Sofia Daza Arandia           | Faber Bickerstaffe  | Thomas Bonnet             | Yanis Bougherara     | Herald Nakpil      |
 
 
