@@ -13,7 +13,7 @@ The ideal schedule is given below. It is subject to modifications.
 Class-related discussion and questions will be on Slack. Do not forget to register [here](https://forms.gle/9aKQ25idaypnmAJb8).
 
 {{% notice warning %}}
-The lecture of the 31st of October is on Zoom. You can join the Zoom following this [link](https://unil.zoom.us/j/4812532318?pwd=amMwRjRRRmU2R0dBT2c2OVlhd3hFQT09&omn=93290565964). It will be recorded and the record will be shared on this page.
+The lecture of the 31st of October was on Zoom. The record is on this [link](https://unil.zoom.us/rec/share/XiOP_aFUDuT9DnTH3lRnHRaDjk24p58ZtAdYXbYeC0VluOT5Ia8U9waSvZWU69pK.oa_J3VM47VR3DUMA?startTime=1730361683000), passcode: 8a=3P!BE. 
 {{% /notice %}}
 
 | Week | Date | Topic | Instructor |   
