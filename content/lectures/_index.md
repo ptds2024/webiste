@@ -27,7 +27,7 @@ The lecture of the 31st of October was on Zoom. The record is on this [link](htt
 | 7 | 31 Oct | [Functional programming](https://ptds2024.github.io/class/lecture10_functional), [Package creation](https://ptds2024.github.io/class/lecture11_pkg), [Advanced shiny App](https://ptds2024.github.io/class/lecture12_shiny2), | Samuel |
 | 8 | 7 Nov | Exercise and Homework 3 | Timofei |
 | 9 | 14 Nov | [Data science with R on Google Cloud](https://ptds2024.github.io/class/lecture13_googlecloud) | Samuel |
-| 9 | 21 Nov | TBA | Samuel |
+| 9 | 21 Nov | Power BI, final class | Samuel |
 | 11 | 28 Nov | Group Project | Timofei | 
 | 12 | 5 Dec | Group project | Timofei |
 | 13 | 12 Dec | Group project | Timofei | 
