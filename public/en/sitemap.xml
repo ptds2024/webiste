@@ -13,8 +13,6 @@
   </url><url>
     <loc>http://localhost:1313/en/syllabus/general/</loc>
   </url><url>
-    <loc>http://localhost:1313/en/project/</loc>
-  </url><url>
     <loc>http://localhost:1313/en/tutorials/workflow/</loc>
     <lastmod>2018-09-03T11:19:38+02:00</lastmod>
   </url><url>
@@ -41,6 +39,8 @@
     <lastmod>2018-08-15T19:08:54+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/en/lectures/y21-22/</loc>
+  </url><url>
+    <loc>http://localhost:1313/en/project/</loc>
   </url><url>
     <loc>http://localhost:1313/en/group/</loc>
   </url><url>

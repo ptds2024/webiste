@@ -28,13 +28,6 @@
 	"content": "Location and Time Location: Anthropole/3032 Time: 9 - 12 (see the lectures schedule for more details) Course Websites Course website: https://ptds.samorso.ch/ Online textbook: http://r.smac-group.com/ Discussion Forum: on slack Course Staff Instructor Name: Samuel Orso Email: Samuel.Orso@unil.ch Office: Anthropole/3090.1 Office Hours: Appointment may be made upon request. find me on GitHub Teaching Assistant Name: Timofei Shashkov Email: timofei.shashkov@unil.ch Office: Extranef/134 Office Hours: Appointment may be made upon request. "
 },
 {
-	"uri": "http://localhost:1313/en/project/",
-	"title": "Project",
-	"tags": [],
-	"description": "",
-	"content": "Project Project represents 30 points, so 50% of the final grade.\nGroups are here. Different requirements are explained in these slides and the pdf below.\nRelated files project_summary.pdf (61 ko) "
-},
-{
 	"uri": "http://localhost:1313/en/tutorials/workflow/",
 	"title": "Project-oriented workflow",
 	"tags": [],
@@ -110,6 +103,13 @@
 	"tags": [],
 	"description": "",
 	"content": "Lectures from 2021-2022 Lectures fully online via Zoom are indicated with a º symbol.\nWeek Date Time Topic Instructor Videos Slides 1 27 Sept 9:00 - 10:00 Introduction, RMarkdown Samuel Orso RMarkdown, Zoom meeting Introduction, RMarkdown 1 27 Sept 10:15 - 12:00 R/RStudio installation, Homework #0, R coding style guide Aleksandr Shemendyuk 2º 4 Oct 9:00 - 10:00 GitHub, Data structures Samuel Orso GitHub, Data structures Git/GitHub, Data Structure 2 4 Oct 10:15 - 12:00 Project-oriented workflow, Homework #1 Aleksandr Shemendyuk 3º 11 Oct 9:00 - 10:00 Control structures Samuel Orso Control structures Control Structure 3 11 Oct 10:15 - 12:00 Homework #2 Aleksandr Shemendyuk 4 18 Oct 9:00 - 10:00 Functions, Group projects Samuel Orso Functions Function, Proposal 4 18 Oct 10:15 - 12:00 Homework #2 Aleksandr Shemendyuk 5º 25 Oct 9:00 - 10:00 Functions Samuel Orso Functions Function 5 25 Oct 10:15 - 12:00 Homework #3, Logistic regression Aleksandr Shemendyuk 6 1 Nov 9:00 - 10:00 Shiny Web applications Samuel Orso Shiny Shiny 6 1 Nov 10:15 - 12:00 Project proposal coaching Samuel Orso 7º 8 Nov 9:00 - 10:00 R-packaging Samuel Orso Packages R pkg 7 8 Nov 10:15 - 12:00 Homework #3 Aleksandr Shemendyuk 8º 15 Nov 9:00 - 10:00 blogdown: websites and blogs creation Samuel Orso website 8 15 Nov 10:15 - 12:00 Homework #4 Aleksandr Shemendyuk 9º 22 Nov 9:00 - 10:00 Webscraping Samuel Orso Webscraping webscraping 9 22 Nov 10:15 - 12:00 Homework #4 Aleksandr Shemendyuk 10º 29 Nov 9:00 - 10:00 Samuel Orso Advanced shiny 10 29 Nov 10:15 - 12:00 Aleksandr Shemendyuk 11º 6 Dec Project coaching Samuel Orso 12 13 Dec Project coaching Aleksandr Shemendyuk 13 20 Dec Project presentations Samuel Orso "
+},
+{
+	"uri": "http://localhost:1313/en/project/",
+	"title": "Project",
+	"tags": [],
+	"description": "",
+	"content": "Project Project represents 30 points, so 50% of the final grade.\nGroups are here. Different requirements are explained in these slides and the pdf below.\nRelated files project_summary.pdf (61 ko) "
 },
 {
 	"uri": "http://localhost:1313/en/group/",
