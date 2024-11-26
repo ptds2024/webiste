@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Syllabus on Programming tools for data science</title>
+    <link>http://localhost:1313/en/syllabus/</link>
+    <description>Recent content in Syllabus on Programming tools for data science</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <lastBuildDate>Fri, 09 Aug 2019 16:46:51 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/en/syllabus/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>General information</title>
+      <link>http://localhost:1313/en/syllabus/general/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/syllabus/general/</guid>
+      <description>Location and Time Location: Anthropole/3032 Time: 9 - 12 (see the lectures schedule for more details) Course Websites Course website: https://ptds.samorso.ch/ Online textbook: http://r.smac-group.com/ Discussion Forum: on slack Course Staff Instructor Name: Samuel Orso Email: Samuel.Orso@unil.ch Office: Anthropole/3090.1 Office Hours: Appointment may be made upon request. find me on GitHub Teaching Assistant Name: Timofei Shashkov Email: timofei.shashkov@unil.ch Office: Extranef/134 Office Hours: Appointment may be made upon request. </description>
+    </item>
+    <item>
+      <title>Course description</title>
+      <link>http://localhost:1313/en/syllabus/coursedescr/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/syllabus/coursedescr/</guid>
+      <description>This class is intended to introduce to the students a wide range of programming tools using the R language. Tentative list of topics that will be discussed in this class are listed below:&#xA;Reproducible research: knitr and rmarkdown Version control: GitHub Introduction to programming: Data structures, logical operators, control structures and functions Visualizations: Exploratory data analysis with Base R and ggplot2 R packages: Construction of R-packages using devtools, roxygen2 and pkgdown Communication: webiste creation via blogdown, Web application via shiny Web scraping: Automatic extraction of data from websites using SelectorGadget, rvest and quantmod, regular expression High performance computing: R and C++ integration via Rcpp, parallel computing.</description>
+    </item>
+    <item>
+      <title>Grading</title>
+      <link>http://localhost:1313/en/syllabus/grading/</link>
+      <pubDate>Thu, 09 Aug 2018 16:46:59 +0200</pubDate>
+      <guid>http://localhost:1313/en/syllabus/grading/</guid>
+      <description>Learning outcomes will be assessed based on the performances within each of the following categories:&#xA;Type Points Semester project 30 Homeworks 30 There won&amp;rsquo;t be a final examination for this course. Instead, your progress towards achieving the learning outcomes will be continuously evaluated throughout the semester via homework assignments, the project, and your active participation.&#xA;Semester project The final project offers a chance to integrate the knowledge acquired throughout the course and apply it to a real-world scenario.</description>
+    </item>
+    <item>
+      <title>Communication</title>
+      <link>http://localhost:1313/en/syllabus/communication/</link>
+      <pubDate>Fri, 09 Aug 2019 16:46:51 +0200</pubDate>
+      <guid>http://localhost:1313/en/syllabus/communication/</guid>
+      <description>Slack We will utilize Slack for discussing class-related matters and addressing inquiries. This platform is designed to facilitate collaborative learning, leveraging the combined wisdom of your peers and instructors. Please feel free to share questions with the entire class, especially if they pertain to course content. We strongly encourage you to seek clarification if you encounter difficulties grasping a concept and to offer assistance to your fellow classmates whenever possible by responding to their queries.</description>
+    </item>
+    <item>
+      <title>Material</title>
+      <link>http://localhost:1313/en/syllabus/material/</link>
+      <pubDate>Wed, 15 Aug 2018 19:08:54 +0200</pubDate>
+      <guid>http://localhost:1313/en/syllabus/material/</guid>
+      <description>Laptops Please consider bringing a laptop with you to class each week if you have one available. We encourage collaborative work among students, and ideally, we aim to have at least one laptop for every 2 to 3 students. Given that both homework assignments and the project involve team efforts, we recommend partnering with classmates who possess a laptop.&#xA;In the event that you intend to purchase a laptop, please keep in mind that students from Swiss Universities can benefit from preferential pricing through the Neptun Projekt or EPFL&amp;rsquo;s Poseidon.</description>
+    </item>
+    <item>
+      <title>Convinced?</title>
+      <link>http://localhost:1313/en/syllabus/final/</link>
+      <pubDate>Fri, 17 Aug 2018 13:39:19 +0200</pubDate>
+      <guid>http://localhost:1313/en/syllabus/final/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,232 @@
++++
+title = "homework #3"
+date =  2018-08-17T16:40:57+02:00
+weight = 25
++++
+
+{{% notice warning %}}
+**Deadline: 2021-11-14 11:59pm**
+To submit your work, simply push it to the dedicated repository created for your group.  
+We will grade only the latest files prior to the deadline. Any ulterior modifications are pointless. 
+{{% /notice %}}
+
+The objectives of this homework assignment are the followings:
+
+- Become competent at programming effectively using if/else and iterations statements; 
+- Learn how to program effectively using functions and think like a programmer;  
+- Improve your collaborative skills via GitHub.
+
+This project **must** be done using GitHub and respect the following requirements:
+
+- All members of the group must commit at least once.  
+- All commit messages must be reasonably clear and meaningful.  
+- Your GitHub repository must include at least one issue containing some form of TO DO list. 
+
+You can create one or several RMarkdown files to answer the following problems:
+
+#### Problem 1: Finding area of a shape
+In this problem, we consider a Monte-Carlo approach for approximating the area of a shape $S$ (that you assume you do not know). To start with, let us consider a unit square, which has an area of 1, and consider the shape $S$, which is an intersection of three regions $S = D_1 \cap D_2 \cap D_3 $, where
+
+$$D_1: x^2 + y^2 > 0.5^2; \quad D_2: (x - 0.5)^2 + (y - 0.5)^2 < 0.5^2; \quad D_3: y > x - 0.5.$$
+
+Let us assume that the x and y coordinates are uniformly distributed between 0 and 1, that is $X\sim\mathcal{U}(0, 1)$ and $Y\sim\mathcal{U}(0, 1)$. We consider the following method for estimating the area of this circle:  
+1. Simulate $B$ coordinates $[X_i,\; Y_i]^T$, $i=1,\dots,B$.   
+2. Create a vector of Booleans $Z$, such that $Z_i = 1$ if $(X_i, Y_i) \in S$ and 0 otherwise.  
+3. Estimate $\mathrm{area}(S)$ as follows:
+
+$$\text{area of the square } \times \frac{\text{number of points in the } S}{\text{total number of points}} = \frac{\sum_i^B Z_i}{B}.$$
+
+*If you want to understand why this method works, see the bottom of the page.*
+
+**a)** Create a function that approximates $\mathrm{area}(S)$ following the above recipe. Your function should be called `find_area()` and should have three arguments:   
+
+  + `B`: the number of points for the approximation with defaults value = 5000,   
+  + `seed`: a positive integer that controls the generation of random numbers with default value = 10,   
+  + `make_plot`: a Boolean value that control whether or a not a graph should be made (see below for details and use FALSE as default).  
+  
+Your function should look like:
+
+```{toml}
+find_area <- function(B = 5000, seed = 10, make_plot = FALSE){
+  # Control seed
+  set.seed(seed)
+  
+  # Simulate B points
+  point = matrix(runif(2*B, 0, 1), nrow = B, ncol = 2)
+  
+ ...
+ 
+ return(area_hat)
+}
+```
+
+When enabling the plot by setting `make_plot = TRUE`, the function `find_area()` should produce a graph with a square, the shape of $S$ inside, and the `B` points with two distinct colors according to whether the point is inside or outside the circle. See below for an example.
+<img src="/homeworks/hw3_pr1.png" alt="mc1" width="400px"/> 
+
+**b)** Verify that by running `find_area(B=10^6, make_plot = TRUE)` the function returns the value $0.571741$. Compare it to the real area of the shape $S$ (calculate it using simple school formulas).
+
+#### Problem 2: Satellite Navigation System
+Global Navigation Satellite Systems or GNSS are systems with global coverage that uses satellites to provide autonomous geo-spatial positioning. They allow small electronic receivers to determine their location (longitude, latitude, and altitude/elevation) to high precision (within a few meters) using time signals (i.e. "distances" informally speaking) transmitted along a line of sight by radio from satellites. Currently, there exist only three global operational GNSS, the United States' Global Positioning System (GPS), Russia's GLONASS and the European Union's Galileo. However, China is in the process of expanding its regional BeiDou Navigation Satellite System into a global system by 2020. Other countries, such as India, France or Japan are in the process of developing regional and global systems.
+
+Obviously, GNSS are very complex systems and in this exercise we will consider an **extremely simplified** setting to illustrate the basic concepts behind satellite positioning. If you are interested in learning more about GNSS, an excellent introduction to get started this topics can be found here: "[An Introduction to GNSS](http://www.borealisprecision.com/pdf/An_Introduction_to_GNSS.pdf)". 
+
+For simplicity, let us start by assuming that the earth is a motionless perfect circle in a two-dimensional space. Next, we assume that three motionless GNSS-like satellites are placed around the earth. The position of these satellites is assumed to be known and we will assume that there are synchronized (i.e. they all have the same "time"). Our simplified setting can be represented as follows:
+<img src="/homeworks/gps1_hw3.png" alt="gps1" width="400px"/> 
+
+Now, suppose that you are somewhere on our flat earth with a GNSS-like receiver. The way you will be able to compute your position with such system is by first determining the distance (or a closely related notion) between yourself and with each satellite. The computation of these distances is done by comparing the time at which a signal is emitted by a satellite and the time at which it is received by your device. More precisely, let $t_e^{(i)}$ and $t_r^{(i)}$ denote, respectively, the times at which a signal is emitted and received for satellite $i$. To simplify further, we assume that $t_e^{(i)}$ (also known as the clock in each satellite) is "perfect" (this point may surprise you, but in reallity the time in the satellite are subjected to random variations). However, the clock in our device is not perfect and $t_r^{(i)}$ is estimated by $\hat{t}_r^{(i)}$ which represents the time recorded by the receiver device. Since all satellites are assumed to be synchronized, we can write $$\hat{t}_r^{(i)} = t_r^{(i)} + \Delta t,$$ where $\Delta t$ is the time difference, it is the same for all satellites as it does not depend on $i$. Using this simple result as well as the times $\hat{t}_r^{(i)}$ and ${t}_e^{(i)}$, we can compute the estimated distance between us and the $i$-th satellite as follows:$$ \hat{d}_i = c\left[(t_r^{(i)} + \Delta t) - t_e^{(i)}\right] = c\left(t_r^{(i)}  - t_e^{(i)}\right) + c \Delta t = d_i + \varepsilon,$$ where $c$, $d_i$ and $\varepsilon$ denote, respectively, the speed of the signal, the true distance between us and the $i$-th satellite, and the measurement error. This setting can be represented as follows:
+<img src="/homeworks/gps2_hw3.png" alt="gps2" width="400px"/> 
+Next, we let $(x_i, y_i), \, i = 1,2,3$ denote the position of satellite $i$. The coordinates of these points are given in the table below:
+
+$i$ | $x_i$ | $y_i$ 
+:-- | :-- | :-- 
+1 | -300 | 300 
+2 | 300 | 300 
+3 | 0 | -300
+
+Finally, we let $(x_0, y_0)$ denotes our position on earth. Then, the distance between our position and the $i$-th satellite is given by $$ d_i = \sqrt{\left(x_i - x_0\right)^2 + \left(y_i - y_0\right)^2}. $$
+Unfortunately, $d_i$ is unknown (if our position were known, why using a GNSS system). Instead, we can express the distance as $d_i = \hat{d}_i - \varepsilon$. We obtain following system of equations:
+$$ \begin{aligned} (x_1 - x_0)^2 + (y_1 - y_0)^2 &= (\hat{d}_1 - \varepsilon)^2 \\\  (x_2 - x_0)^2 + (y_2 - y_0)^2 &= (\hat{d}_2 - \varepsilon)^2 \\\  (x_3 - x_0)^2 + (y_3 - y_0)^2 &= (\hat{d}_3 - \varepsilon)^2, \end{aligned} $$
+where $\boldsymbol{\theta}=[x_0\;\;y_0\;\;\varepsilon]^T$ are the three unknown quantities we wish to estimate and $\hat{d}_i,\;i=1,2,3,$ are the observations.
+
+While there exists several methods to solve such estimation problem, the most common is known as the "least-square adjustement" and will be used in this problem. It is given by: $$ \hat{\boldsymbol{\theta}} = \operatorname{argmin}_{\boldsymbol{\theta}} \; \sum_1^3 \; \left[\left(x_i - x_0\right)^2 + \left(y_i - y_0\right)^2 - \left(\hat{d}_i - \varepsilon\right)^2\right]^2. $$
+
+**a)** Write a general function named `get_position()` that takes as a single argument a vector of observed distances and returns an object with an appropriate class having custom `summary` and `plot` functions. For example, suppose we observe the vector of distances $$ \hat{\mathbf{d}} = [\hat{d}_1\;\;\hat{d}_2\;\;\hat{d}_3]^T = [449.2136\;\;284.8427\;\;414.3106]^T, $$ then you should replicate (approximately) the following results: 
+```{toml}
+position = get_position(c(453.2136, 288.8427, 418.3106))
+summary(position)
+```
+
+```{toml}
+## The estimated position is:
+## X = 99.9958
+## Y = 100.003
+```
+
+```{toml}
+plot(position)
+```
+<img src="/homeworks/gps3_hw3.png" alt="gps3" width="400px"/> 
+
+Note that inside the `get_position()` function, you need to estimate the positions $\hat{x}$ and $\hat{y}$. You can use the R function `optim` for this purpose. It has the syntax:
+```{toml}
+optim(par = starting_values, fn = my_objective_function, arg1 = arg1, ..., argN = argN)
+```
+The arguments are:  
+- `starting_values`: the starting values for the optimization, here a vector of three values corresponding to $\hat{\boldsymbol{\theta}}$.  
+- `my_objective_function`: the objective function, here the one we defined above. It **must** have $\boldsymbol\theta$ as one of its arguments.  
+- `arg1` to `argN`: additional arguments for the objective functions.  
+
+**b)** Generalize the function `get_position()` of the point **a)** to accept also a matrix of observed distances (but keep only one argument!).   
+**c)** Verify that the function you wrote at the point **b)** display the same graph
+```{toml}
+position = get_position(dist_mat)
+summary(position)
+```
+<img src="/homeworks/gps4_hw3.png" alt="gps4" width="400px"/> 
+
+where the matrix inputed is
+```{toml}
+##           [,1]     [,2]     [,3]
+##  [1,] 458.9474 337.1013 363.1112
+##  [2,] 337.0894 458.9355 363.0993
+##  [3,] 442.5835 442.5835 283.9493
+##  [4,] 520.1845 520.1845 184.0449
+##  [5,] 534.1411 499.0299 191.3455
+##  [6,] 499.1322 534.2434 191.4479
+##  [7,] 542.0904 470.4216 212.7515
+##  [8,] 470.4070 542.0758 212.7369
+##  [9,] 541.6032 429.4569 250.9978
+## [10,] 429.4120 541.5583 250.9528
+```
+
+#### Problem 3
+
+This exercise is dedicated to code your own "logistic regression" using any arbitrary probability function and the `optim()` function.
+
+Recall the tutorial on [logistic regression](https://ptds.samorso.ch/tutorials/logistic/), where a probability of _success_ is defined by the sigmoid function $\sigma(t) = (1 + e^{-t})^{-1}$. Now, to determine the probability of _success_ we consider the CDF of a standard Cauchy distribution
+
+$$\sigma(t) = \frac{1}{\pi} \arctan (t) + \frac{1}{2}.$$
+
+Similarly to the tutorial, further we express $t$ as a linear combination of known covariates $x$ and unknown coefficients $w$:
+
+$$t = Xw.$$
+
+We will compare a standard `glm` fit for the `titanic` data set with `family = binomial(link = "logit")` to our own model.
+Your goal is to code the log likelihood function $\mathcal{L}$ of our model, fit the standard `glm` model for the training set (follow the tutorial), fit the Cauchy model, and finally, compare the results on the test set.
+
+**(a)** Load the `titanic` data set. Create a training set `data_train` being $70\%$ of the data, and a test set `data_test` - the remaining $30\%$. Keep only the `Survived, Pclass, Sex, SibSp, Parch, Fare` columns. Fit the logistic regression on the training set with `Survived` being the response variable.
+
+**(b)** Code the negative log likelihood function `nll(w, X, y)`, where `w` is a vector of unknown coefficients; `X` is a matrix $n \times 5$ of the observations; `y` is the response variable. Use optimisation function `optim()` with target `nll` and `method = "BFGS"`.
+
+**\(c)** For both models calculate the survival probability of `data_test`. Using a threshold of 0.5, predict the survival as $\text{Survive} = \text{Prob} > 0.5$. Create two confusion matrices using, for example, `table()`, and compare the accuracies of both models. Which model performs better?
+
+
+
+#### Problem 4
+
+This exercise aims to be a guided tutorial towards building your own (simple) neural network. It is entirely based on [James Loy's tutorial](https://towardsdatascience.com/how-to-build-your-own-neural-network-from-scratch-in-python-68998a08e4f6) on how to do so on Python.  
+
+A neural network is, briefly speaking, a way to map input data to output data using mathematical functions along in order to do so. In a neural network, you have inputs, call them $x$, constituting the input layer; you have an arbitrary number of hidden variables in an arbitrary number of hidden layers; an output layer, call it $\hat{y}$; a set of weights $\mathbb{W}$ and biases $\mathbb{b}$ and, finally, an activation function $\sigma$ for each hidden layer, that "transports" your inputs by scaling them with the weights and adding noises with the biases to finally give you your output layer. 
+
+For simplicity in this tutorial, we will consider the biases to be equally 0 and the network to only have a single hidden layer. The following picture, taking again from [James Loy's tutorial](https://towardsdatascience.com/how-to-build-your-own-neural-network-from-scratch-in-python-68998a08e4f6), should graphically clarify the situation. 
+
+<img src="/homeworks/neural_net.png" width="400px"/> 
+
+The output of a neural network with one hidden layer is given by considering the following function: $$\hat{y} = \sigma(W_2 \sigma(W_1 x + b_1) + b_2)$$ and since we consider the biases to be 0, in our case, it boils down to specify $$\hat{y} = \sigma(W_2 \sigma(W_1 x)). $$
+
+We will also impose a parametric form for $\sigma$ by taking the sigmoid function, which possesses nice properties in this context (among which non-linearity and differentiability), which is given by: $$\sigma(x) = \frac{1}{1+e^{-x}}.$$
+
+We will start by imposing some random values to the weights and we will update them by "training" the neural network, which consists of two steps: the feedforward step and the back propagation step: 
+
++ The feedforward step consists of computing $\hat{y}$ and to consequently compute the loss function (or cost function) which measures the difference between the observed output and its computed value; 
++ The back propagation consists of updating the weights $W_1$ and $W_2$ in order to reduce the value of the loss computed in the first step. 
+
+Graphically, the following picture should clarify the situation, taken again from [James Loy's tutorial](https://towardsdatascience.com/how-to-build-your-own-neural-network-from-scratch-in-python-68998a08e4f6):
+
+<img src="/homeworks/feedback.png" width="400px"/> 
+
+Now that the setting is clarified, we will build the neural network step by step. 
+
+**(a)** Create a matrix containing the following 4 observations (inputs): 
+
+<img src="/homeworks/obs.png" width="400px"/> 
+
+and a vector containing the following 4 outcomes, corresponding to the 4 observations above: 
+
+<img src="/homeworks/outcome.png" width="400px"/> 
+
+**(b)** Generate a 3x4 matrix of weights ($W_1$), each uniformly generated between 0 and 1. Then, create a list storing the state of the neural net (to be updated in the training of the neural net), which consists of the inputs, the weights ($W_1$ and $W_2$ (noting that $W_2$ is a vector of 4 random uniform weights)), the outputs and the predicted outputs (create it as a 4x1 matrix with 0s as initial values). 
+
+**\(c)** Create and store the sigmoid function (as a function of a generic `x`) into `R`. Then, create the derivative of this function. 
+
+**(d)** Create and store the loss function (as a function of a generic neural net as created in part b)) into `R`. For the purpose of this exercise, we assume that the loss (or cost) is simply the sum of the squared errors, i.e. $$\text{loss}(y, \hat{y})=\sum_{i=1}^n (\hat{y}-y)^2.$$
+
+**(e)** Create the feedforward function (as a function of a generic neural net as created in part b)). To do so, use the sigmoid function from point c): in particular, assign to the first layer of the neural net the value of the sigmoid of the matrix product of the input layer with the weights $W_1$. Then, assign to the output of the neural net the value of the sigmoid of the matrix product of the first layer of the neural net with the weights $W_2$. Note that the matrix multiplication is undertaken by using the operator `%*%` in `R`. Do the operations in the order mentioned.   
+
+**(f)** Create the back propagation function (as a function of a generic neural net as created in part b)). To do so, we will update the weights by a gradient descent-type procedure. This works as follow:
+
++ Create the derivative of the loss function with respect to $W_2$: using the chain rule, it can be shown that this derivative is given by: 
+
+$$ (\frac{1}{1+e^{-xW_1}})^T \times 2(\hat{y}-y) \cdot ( \frac{1}{1+e^{-W_2 \frac{1}{1+e^{-xW_1}}}} \cdot (1-\frac{1}{1+e^{-W_2 \frac{1}{1+e^{-xW_1}}}}) ) $$
+
+Hints: The above subscript $T$ denotes the transpose of the matrix (obtain it using the `t()` function in `R`). The $\times$ operator denotes a matrix product, whereas $\cdot$ denotes a regular multiplication. Obtain it by using Note that $\frac{1}{1+e^{-xW_1}}$ is the layer created using the `feedforward` function. Also, note that the last part is simply the sigmoid derivative evaluated at the output created using the `feedforward` function above. So both of these elements are stored in the neural net you input to the `backpropagation` function and therefore, the above derivative should not be that hard to write. 
+
++ Create the derivative of the loss function with respect to $W_1$: using the chain rule, it can be shown that this derivative is given by: 
+
+$$ x \cdot ( 2(\hat{y}-y) \cdot ( \frac{1}{1+e^{-W_2 \frac{1}{1+e^{-xW_1}}}} \cdot (1-\frac{1}{1+e^{-W_2 \frac{1}{1+e^{-xW_1}}}}) \times (W_2)^T  ) \cdot (\frac{1}{1+e^{-xW_1}} \cdot (1-\frac{1}{1+e^{-xW_1}}) )$$
+
+The notation is as before. Note that $x$ is retrieved from the output of the neural net that is an argument of the function. Also note that $\frac{1}{1+e^{-xW_1}} \cdot (1-\frac{1}{1+e^{-xW_1}}) $ is the sigmoid derivative evaluated at the layer obtained above.  
+
+Then, update weights1 by adding the derivative with respect to $W_1$ obtained above and update weights2 by adding the derivative with respect to $W_2$ also obtained above. Return the resulting neural net as an output of this function. 
+
+**(g)** "Train" the neural network: iterate `feedforward` and `backpropagation` 1500 times on the neural net created in b). Store the values of the loss function along the iterations to be able to plot it. Then display the predicted vs the actual observation. 
+
+#### Technical explanations around problem 1
+To understand why the method presented indeed calculates the area of the shape, let us show that $$\mathbb{E}\left[Z_i\right] = \text{area}(S).$$
+To prove this result, we start by noticing that $f(x,y) = f_X (x) f_Y (y) = 1$ if $x\in[0, 1]$ and $y\in[0, 1]$ and 0 otherwise.
+
+Let $Z_i = 1$ if $(X_i, Y_i) \in S$ and 0 otherwise. Then, we obtain
+
+$$\mathbb{E}\left[Z_i\right] = \iint_S f(x, y) dx\,dy = \iint_S dx\,dy = \text{area}(S).$$
+
+Finally, to estimate the area of $S$ we perform the Monte-Carlo simulations to estimate $\mathbb{E}[Z_i]$.

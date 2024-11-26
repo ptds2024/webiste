@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Exercises on Programming tools for data science</title>
+    <link>http://localhost:1313/en/exercises/</link>
+    <description>Recent content in Exercises on Programming tools for data science</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <atom:link href="http://localhost:1313/en/exercises/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>http://localhost:1313/en/exercises/exercise1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/exercises/exercise1/</guid>
+      <description>&lt;!DOCTYPE html&gt; Exercice 1 Exercice 1 Samuel Orso 2024-08-25 Lecture #2: R Markdown Basic manipulations: 1. Create a RMarkdown HTML document in RStudio and “knit” it. 1. Create a new header of type 2. 1. Make a linear regression with “Sepal Length” as a response and “Sepal Width” as an explanatory variable from the iris dataset and save the result. 1. Highlight the code with monochrome style. 1. Print the summary of the linear regression.</description>
+    </item>
+  </channel>
+</rss>

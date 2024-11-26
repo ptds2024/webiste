@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Programming tools in data science on Programming tools for data science</title>
+    <link>http://localhost:1313/en/</link>
+    <description>Recent content in Programming tools in data science on Programming tools for data science</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <lastBuildDate>Tue, 05 Sep 2023 13:10:39 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/en/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git(hub) setup</title>
+      <link>http://localhost:1313/en/tutorials/github/</link>
+      <pubDate>Tue, 05 Sep 2023 13:10:39 +0200</pubDate>
+      <guid>http://localhost:1313/en/tutorials/github/</guid>
+      <description>Installing and setting up Git, GitHub, and a Git GUI In this section we will install a distributed version-control system Git, register a new user at GitHub and connect them together.&#xA;1. Installing and setting up Git Download Git installer from git website by clicking on &amp;ldquo;Download for Windows&amp;rdquo; or &amp;ldquo;Download for macOS&amp;rdquo; button, automatically detected for your machine. Open the downloaded file and follow the proposed steps Configure your Git to let it know who you are.</description>
+    </item>
+    <item>
+      <title>R/RStudio setup</title>
+      <link>http://localhost:1313/en/tutorials/r_install/</link>
+      <pubDate>Tue, 05 Sep 2023 13:10:39 +0200</pubDate>
+      <guid>http://localhost:1313/en/tutorials/r_install/</guid>
+      <description>Installing R and RStudio 1. Installing R Install the latest version of R (4.3.1 as of September 5, 2023). R itself is similar to an engine and chassis of a car, that is a bare minimum so that you can start driving. You need to follow steps below:&#xA;Visit https://cran.r-project.org and click on &amp;ldquo;Download R for &amp;hellip;&amp;rdquo;, where &amp;hellip; corresponds to your operating system. Depending on the operating system: For Mac: download &amp;ldquo;R-4.</description>
+    </item>
+    <item>
+      <title>General information</title>
+      <link>http://localhost:1313/en/syllabus/general/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/syllabus/general/</guid>
+      <description>Location and Time Location: Anthropole/3032 Time: 9 - 12 (see the lectures schedule for more details) Course Websites Course website: https://ptds.samorso.ch/ Online textbook: http://r.smac-group.com/ Discussion Forum: on slack Course Staff Instructor Name: Samuel Orso Email: Samuel.Orso@unil.ch Office: Anthropole/3090.1 Office Hours: Appointment may be made upon request. find me on GitHub Teaching Assistant Name: Timofei Shashkov Email: timofei.shashkov@unil.ch Office: Extranef/134 Office Hours: Appointment may be made upon request. </description>
+    </item>
+    <item>
+      <title>Project-oriented workflow</title>
+      <link>http://localhost:1313/en/tutorials/workflow/</link>
+      <pubDate>Mon, 03 Sep 2018 11:19:38 +0200</pubDate>
+      <guid>http://localhost:1313/en/tutorials/workflow/</guid>
+      <description>It’s like agreeing that we will all drive on the left or the right. A hallmark of civilization is following conventions that constrain your behavior a little, in the name of public safety. Jenny Bryan Introduction In this tutorial we will learn key aspects of making a good research project:&#xA;reproducible portable self-contained In data science context, reproducibility means that the whole analysis can be recreated (or repeated) from the fresh start and raw data and get exactly the same results.</description>
+    </item>
+    <item>
+      <title>Course description</title>
+      <link>http://localhost:1313/en/syllabus/coursedescr/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/syllabus/coursedescr/</guid>
+      <description>This class is intended to introduce to the students a wide range of programming tools using the R language. Tentative list of topics that will be discussed in this class are listed below:&#xA;Reproducible research: knitr and rmarkdown Version control: GitHub Introduction to programming: Data structures, logical operators, control structures and functions Visualizations: Exploratory data analysis with Base R and ggplot2 R packages: Construction of R-packages using devtools, roxygen2 and pkgdown Communication: webiste creation via blogdown, Web application via shiny Web scraping: Automatic extraction of data from websites using SelectorGadget, rvest and quantmod, regular expression High performance computing: R and C++ integration via Rcpp, parallel computing.</description>
+    </item>
+    <item>
+      <title>Grading</title>
+      <link>http://localhost:1313/en/syllabus/grading/</link>
+      <pubDate>Thu, 09 Aug 2018 16:46:59 +0200</pubDate>
+      <guid>http://localhost:1313/en/syllabus/grading/</guid>
+      <description>Learning outcomes will be assessed based on the performances within each of the following categories:&#xA;Type Points Semester project 30 Homeworks 30 There won&amp;rsquo;t be a final examination for this course. Instead, your progress towards achieving the learning outcomes will be continuously evaluated throughout the semester via homework assignments, the project, and your active participation.&#xA;Semester project The final project offers a chance to integrate the knowledge acquired throughout the course and apply it to a real-world scenario.</description>
+    </item>
+    <item>
+      <title>2023-2024</title>
+      <link>http://localhost:1313/en/lectures/y23-24/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/lectures/y23-24/</guid>
+      <description>Lectures Every Thursday from 8:30 to 12:00.&#xA;The ideal schedule is given below. It is subject to modifications.&#xA;Class-related discussion and questions will be on Slack. Do not forget to register here.&#xA;Week Date Topic Instructor 1 21 Sept No class (Thesis planning &amp;amp; Career planning workshops) 2 28 Sept Introduction, RMarkdown, Github, R/Rstudio installation Samuel 3 5 Oct Exercise and Homework 1, Project-oriented workflow Aleksandr 4 12 Oct Data structures, Control structures, Function Samuel 5 19 Oct Exercise and Homework 2, R coding style guide Aleksandr 6 26 Oct Object-oriented programming, Webscraping, Shiny App I Samuel 7 2 Nov Exercise and Homework 3 Aleksandr 8 9 Nov Functional programming, Shiny App I, Package creation Samuel 9 16 Nov Exercise and Homework 4 Aleksandr 10 23 Nov Package creation, Shiny App II, Project Samuel 11 30 Nov Group Project Aleksandr 12 7 Dec Website creation, Slide Samuel 13 14 Dec Group project Aleksandr 14 21 Dec Project Presentations Samuel and Aleksandr </description>
+    </item>
+    <item>
+      <title>Communication</title>
+      <link>http://localhost:1313/en/syllabus/communication/</link>
+      <pubDate>Fri, 09 Aug 2019 16:46:51 +0200</pubDate>
+      <guid>http://localhost:1313/en/syllabus/communication/</guid>
+      <description>Slack We will utilize Slack for discussing class-related matters and addressing inquiries. This platform is designed to facilitate collaborative learning, leveraging the combined wisdom of your peers and instructors. Please feel free to share questions with the entire class, especially if they pertain to course content. We strongly encourage you to seek clarification if you encounter difficulties grasping a concept and to offer assistance to your fellow classmates whenever possible by responding to their queries.</description>
+    </item>
+    <item>
+      <title>2022-2023</title>
+      <link>http://localhost:1313/en/lectures/y22-23/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/lectures/y22-23/</guid>
+      <description>Lectures Every tuesday from 8:30 to 12:00.&#xA;The ideal schedule is given below.&#xA;Class-related discussion and questions will be on Slack, do not forget to register here.&#xA;Week Date Topic Instructor 1 20 Sept Introduction, RMarkdown, Github, R/Rstudio installation Samuel 2 27 Sept Exercise and Homework 1, Project-oriented workflow Aleksandr 3 4 Oct Data structures, Control structures Samuel 4 11 Oct Exercise and Homework 2, R coding style guide Aleksandr 5 18 Oct Function I, project proposal, webscraping Samuel 6 25 Oct Exercise and Homework 3 Aleksandr 7 1 Nov Group project Aleksandr 8 8 Nov Function II, Shiny app I Samuel 9 15 Nov Exercise and Homework 4 Aleksandr 10 22 Nov R-pkg Samuel 11 29 Nov Group project Aleksandr 12 6 Dec Shiny app II, project Samuel 13 13 Dec Group project Aleksandr 14 20 Dec Project presentations Samuel and Aleksandr </description>
+    </item>
+    <item>
+      <title>Material</title>
+      <link>http://localhost:1313/en/syllabus/material/</link>
+      <pubDate>Wed, 15 Aug 2018 19:08:54 +0200</pubDate>
+      <guid>http://localhost:1313/en/syllabus/material/</guid>
+      <description>Laptops Please consider bringing a laptop with you to class each week if you have one available. We encourage collaborative work among students, and ideally, we aim to have at least one laptop for every 2 to 3 students. Given that both homework assignments and the project involve team efforts, we recommend partnering with classmates who possess a laptop.&#xA;In the event that you intend to purchase a laptop, please keep in mind that students from Swiss Universities can benefit from preferential pricing through the Neptun Projekt or EPFL&amp;rsquo;s Poseidon.</description>
+    </item>
+    <item>
+      <title>2021-2022</title>
+      <link>http://localhost:1313/en/lectures/y21-22/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/lectures/y21-22/</guid>
+      <description>Lectures from 2021-2022 Lectures fully online via Zoom are indicated with a º symbol.&#xA;Week Date Time Topic Instructor Videos Slides 1 27 Sept 9:00 - 10:00 Introduction, RMarkdown Samuel Orso RMarkdown, Zoom meeting Introduction, RMarkdown 1 27 Sept 10:15 - 12:00 R/RStudio installation, Homework #0, R coding style guide Aleksandr Shemendyuk 2º 4 Oct 9:00 - 10:00 GitHub, Data structures Samuel Orso GitHub, Data structures Git/GitHub, Data Structure 2 4 Oct 10:15 - 12:00 Project-oriented workflow, Homework #1 Aleksandr Shemendyuk 3º 11 Oct 9:00 - 10:00 Control structures Samuel Orso Control structures Control Structure 3 11 Oct 10:15 - 12:00 Homework #2 Aleksandr Shemendyuk 4 18 Oct 9:00 - 10:00 Functions, Group projects Samuel Orso Functions Function, Proposal 4 18 Oct 10:15 - 12:00 Homework #2 Aleksandr Shemendyuk 5º 25 Oct 9:00 - 10:00 Functions Samuel Orso Functions Function 5 25 Oct 10:15 - 12:00 Homework #3, Logistic regression Aleksandr Shemendyuk 6 1 Nov 9:00 - 10:00 Shiny Web applications Samuel Orso Shiny Shiny 6 1 Nov 10:15 - 12:00 Project proposal coaching Samuel Orso 7º 8 Nov 9:00 - 10:00 R-packaging Samuel Orso Packages R pkg 7 8 Nov 10:15 - 12:00 Homework #3 Aleksandr Shemendyuk 8º 15 Nov 9:00 - 10:00 blogdown: websites and blogs creation Samuel Orso website 8 15 Nov 10:15 - 12:00 Homework #4 Aleksandr Shemendyuk 9º 22 Nov 9:00 - 10:00 Webscraping Samuel Orso Webscraping webscraping 9 22 Nov 10:15 - 12:00 Homework #4 Aleksandr Shemendyuk 10º 29 Nov 9:00 - 10:00 Samuel Orso Advanced shiny 10 29 Nov 10:15 - 12:00 Aleksandr Shemendyuk 11º 6 Dec Project coaching Samuel Orso 12 13 Dec Project coaching Aleksandr Shemendyuk 13 20 Dec Project presentations Samuel Orso </description>
+    </item>
+    <item>
+      <title>Convinced?</title>
+      <link>http://localhost:1313/en/syllabus/final/</link>
+      <pubDate>Fri, 17 Aug 2018 13:39:19 +0200</pubDate>
+      <guid>http://localhost:1313/en/syllabus/final/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/en/exercises/exercise1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/exercises/exercise1/</guid>
+      <description>&lt;!DOCTYPE html&gt; Exercice 1 Exercice 1 Samuel Orso 2024-08-25 Lecture #2: R Markdown Basic manipulations: 1. Create a RMarkdown HTML document in RStudio and “knit” it. 1. Create a new header of type 2. 1. Make a linear regression with “Sepal Length” as a response and “Sepal Width” as an explanatory variable from the iris dataset and save the result. 1. Highlight the code with monochrome style. 1. Print the summary of the linear regression.</description>
+    </item>
+  </channel>
+</rss>

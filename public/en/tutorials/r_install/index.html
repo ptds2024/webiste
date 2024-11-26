@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.126.2">
+    <meta name="description" content="This website provides the support for the class Programming tools in data science given at the Faculty of Business and Economics (HEC Lausanne) of the University of Lausanne in Fall (currently 2024)">
+<meta name="author" content="Samuel Orso">
+
+    <link rel="shortcut icon" href="https://www.unil.ch/favicon.ico" type="image/x-icon" />
+<link rel="icon" href="https://www.unil.ch/favicon.ico" type="image/x-icon" />
+
+    <title>R/RStudio setup :: Programming tools for data science</title>
+
+    
+    <link href="/css/nucleus.css?1732610602" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1732610602" rel="stylesheet">
+    <link href="/css/hybrid.css?1732610602" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1732610602" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1732610602" rel="stylesheet">
+    <link href="/css/auto-complete.css?1732610602" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1732610602" rel="stylesheet">
+    <link href="/css/theme.css?1732610602" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1732610602" rel="stylesheet">
+    
+      <link href="/css/theme-green.css?1732610602" rel="stylesheet">
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1732610602"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+    <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    
+  
+    
+      
+    
+  
+
+
+  </head>
+  <body class="" data-url="/en/tutorials/r_install/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+	<img src="https://raw.githubusercontent.com/SMAC-Group/ptds2018_website/master/data/hec_logo_white.png" alt="hec_logo" height="80" width="155">
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1732610602"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1732610602"></script>
+<script type="text/javascript">
+    
+        var baseurl = "http:\/\/localhost:1313\/";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1732610602"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/en/syllabus/" title="Syllabus" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/en/syllabus/">
+          Syllabus
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/en/syllabus/general/" title="General information" class="dd-item ">
+        <a href="/en/syllabus/general/">
+        General information
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/en/syllabus/coursedescr/" title="Course description" class="dd-item ">
+        <a href="/en/syllabus/coursedescr/">
+        Course description
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/en/syllabus/grading/" title="Grading" class="dd-item ">
+        <a href="/en/syllabus/grading/">
+        Grading
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/en/syllabus/communication/" title="Communication" class="dd-item ">
+        <a href="/en/syllabus/communication/">
+        Communication
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/en/syllabus/material/" title="Material" class="dd-item ">
+        <a href="/en/syllabus/material/">
+        Material
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/en/syllabus/final/" title="Convinced?" class="dd-item ">
+        <a href="/en/syllabus/final/">
+        Convinced?
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/en/project/" title="Project" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/en/project/">
+          Project
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/en/lectures/" title="Lectures" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/en/lectures/">
+          Lectures
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/en/lectures/y23-24/" title="2023-2024" class="dd-item ">
+        <a href="/en/lectures/y23-24/">
+        2023-2024
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/en/lectures/y22-23/" title="2022-2023" class="dd-item ">
+        <a href="/en/lectures/y22-23/">
+        2022-2023
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/en/lectures/y21-22/" title="2021-2022" class="dd-item ">
+        <a href="/en/lectures/y21-22/">
+        2021-2022
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/en/tutorials/" title="Tutorials" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/en/tutorials/">
+          Tutorials
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/en/tutorials/github/" title="Git(hub) setup" class="dd-item ">
+        <a href="/en/tutorials/github/">
+        Git(hub) setup
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/en/tutorials/r_install/" title="R/RStudio setup" class="dd-item active">
+        <a href="/en/tutorials/r_install/">
+        R/RStudio setup
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/en/tutorials/workflow/" title="Project-oriented workflow" class="dd-item ">
+        <a href="/en/tutorials/workflow/">
+        Project-oriented workflow
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/en/exercises/" title="Exercises" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/en/exercises/">
+          Exercises
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/en/exercises/exercise1/" title="" class="dd-item ">
+        <a href="/en/exercises/exercise1/">
+        
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/en/group/" title="Groups" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/en/group/">
+          Groups
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/en/resources/" title="Resources" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/en/resources/">
+          Resources
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://github.com/ptds2024/"><i class='fab fa-github'></i> Github repo</a>
+              </li>
+          
+              <li> 
+                  <a class="padding" href="https://forms.gle/9aKQ25idaypnmAJb8"><i class='fa fa-fw fa-users'></i> Discussion forum</a>
+              </li>
+          
+              <li> 
+                  <a class="padding" href="https://smac-group.github.io/ds/"><i class='fa fa-fw fa-book'></i> Lectures</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/en/'>Programming tools in data science</a> > <a href='/en/tutorials/'>Tutorials</a> > R/RStudio setup
+          
+         
+          
+         
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#installing-r-and-rstudio">Installing <code>R</code> and <code>RStudio</code></a>
+      <ul>
+        <li><a href="#1-installing-r">1. Installing <code>R</code></a></li>
+        <li><a href="#2-installing-rstudio">2. Installing RStudio</a></li>
+        <li><a href="#3-installing-packages">3. Installing packages</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              R/RStudio setup
+            </h1>
+          
+
+        
+
+
+
+<h2 id="installing-r-and-rstudio">Installing <code>R</code> and <code>RStudio</code></h2>
+<h3 id="1-installing-r">1. Installing <code>R</code></h3>
+<p>Install the latest version of <code>R</code> (4.3.1 as of September 5, 2023). <code>R</code> itself is similar to an engine and chassis of a car, that is a bare minimum so that you can start driving. You need to follow steps below:</p>
+<ul>
+<li>Visit <a href="https://cran.r-project.org">https://cran.r-project.org</a> and click on &ldquo;Download R for &hellip;&rdquo;, where &hellip; corresponds to your operating system.</li>
+<li>Depending on the operating system:
+<ul>
+<li>For Mac: download &ldquo;R-4.3.1-arm64.pkg&rdquo;, open this file, and install <code>R</code>;</li>
+<li>For Windows: click on &ldquo;base&rdquo;, &ldquo;Download R-4.3.1 for Windows&rdquo;, and download the .exe file. Open it, and install <code>R</code>.</li>
+</ul>
+</li>
+</ul>
+<p><em>Note:</em> If you are a Mac user and you see similar to the following warning messages during the startup</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>During startup - Warning messages:
+</span></span><span style="display:flex;"><span>1: Setting LC_CTYPE failed, using &#34;C&#34;
+</span></span><span style="display:flex;"><span>2: Setting LC_COLLATE failed, using &#34;C&#34;
+</span></span><span style="display:flex;"><span>3: Setting LC_TIME failed, using &#34;C&#34;
+</span></span><span style="display:flex;"><span>4: Setting LC_MESSAGES failed, using &#34;C&#34;
+</span></span><span style="display:flex;"><span>5: Setting LC_PAPER failed, using &#34;C&#34;
+</span></span><span style="display:flex;"><span>[R.app GUI 1.50 (6126) x86_64-apple-darwin9.8.0]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>WARNING: You&#39;re using a non-UTF8 locale, therefore only ASCII characters will work. Please read R for Mac OS X FAQ (see Help) section 9 and adjust your system preferences accordingly. [History restored from /Users/nemo/.Rapp.history]
+</span></span></code></pre></div><p>you need to follow <a href="https://stackoverflow.com/questions/9689104/installing-r-on-mac-warning-messages-setting-lc-ctype-failed-using-c">steps below</a>:</p>
+<ul>
+<li>Open Terminal</li>
+<li>Write or paste in: <code>defaults write org.R-project.R force.LANG en_US.UTF-8</code></li>
+<li>Close Terminal</li>
+</ul>
+<h3 id="2-installing-rstudio">2. Installing RStudio</h3>
+<p><em>Caution:</em> Install <code>RStudio</code> only once <code>R</code> has been installed and only in this order.</p>
+<p><code>RStudio</code> is an integrated development environment for <code>R</code>. Following up our example of the car, <code>RStudio</code> is similar to additional parts, such as exterior, interior, air conditioner, etc. You can drive the vehicle without them, but life is much simpler and pleasant if they are present.</p>
+<p>We will install the free version:</p>
+<ul>
+<li>Visit <a href="https://posit.co/download/rstudio-desktop/">RStudio website</a>.</li>
+<li>Click on the respective version of your operating system, this will start the downloading process.</li>
+<li>Open the file and install.</li>
+</ul>
+<p><em>Note:</em> To improve the quality of the code, we will limit the length of lines to 80 symbols. To display the margin in RStudio sourse editor:</p>
+<ul>
+<li>Open RStudio</li>
+<li>Go to Tools -&gt; Global Options… -&gt; Code -&gt; Display</li>
+<li>Click on “Show margin”</li>
+<li>Set &ldquo;Margin column&rdquo; to 80</li>
+</ul>
+<!-- raw HTML omitted -->
+<p><em>Check yourself:</em> Open <code>RStudio</code> application. In the console you will see something as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>R version 4.3.1 (2023-06-16 ucrt) -- &#34;Beagle Scouts&#34;
+</span></span><span style="display:flex;"><span>Copyright (C) 2023 The R Foundation for Statistical Computing
+</span></span><span style="display:flex;"><span>Platform: x86_64-w64-mingw32/x64 (64-bit)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>R is free software and comes with ABSOLUTELY NO WARRANTY.
+</span></span><span style="display:flex;"><span>You are welcome to redistribute it under certain conditions.
+</span></span><span style="display:flex;"><span>Type &#39;license()&#39; or &#39;licence()&#39; for distribution details.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>R is a collaborative project with many contributors.
+</span></span><span style="display:flex;"><span>Type &#39;contributors()&#39; for more information and
+</span></span><span style="display:flex;"><span>&#39;citation()&#39; on how to cite R or R packages in publications.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Type &#39;demo()&#39; for some demos, &#39;help()&#39; for on-line help, or
+</span></span><span style="display:flex;"><span>&#39;help.start()&#39; for an HTML browser interface to help.
+</span></span><span style="display:flex;"><span>Type &#39;q()&#39; to quit R.
+</span></span></code></pre></div><h3 id="3-installing-packages">3. Installing packages</h3>
+<p><em>Note:</em> Packages can be installed from both <code>R</code> and <code>RStudio</code>. The installed <code>RStudio</code> is not required.</p>
+<p>In this course we will utilize a number of packages. If a package is published on CRAN, then the procedure of installing the package is straightforward:</p>
+<ul>
+<li>Open RStudio</li>
+<li>In the console execute the following command: <code>install.packages(&quot;package_name&quot;)</code>, where <code>package_name</code> is the name of the desired package (e.g., &ldquo;ggplot2&rdquo;).</li>
+</ul>
+<p>Several packages, however, would have only development version (or simply be not published on CRAN). Then, knowing the GitHub link to the repo, one could follow the steps below:</p>
+<ul>
+<li>Install <code>devtools</code> package (if it has not yet been installed) as usual (as shown above).</li>
+<li>Type <code>devtools::install_github(&quot;username/repo&quot;)</code> and hit the Enter/return key to execute the command in the console, where <code>username</code> is the username of the owner of the repo, and <code>repo</code> is the name of the repo.</li>
+</ul>
+<p>For homeworks you will use the following packages from CRAN: <code>&quot;tidyverse&quot;</code>, <code>&quot;devtools&quot;</code>, <code>&quot;rmarkdown&quot;</code>, <code>&quot;knitr&quot;</code>, <code>&quot;shiny&quot;</code>, <code>&quot;roxygen2&quot;</code>.</p>
+<p><em>Note:</em> Before installing the <code>&quot;devtools&quot;</code> package, you will most certainly need to install building tools.
+For Windows, you need to install <a href="https://cran.r-project.org/bin/windows/Rtools/">RTools</a>.
+For Mac, you need to install <a href="https://developer.apple.com/xcode/">XCode</a>.
+Check this <a href="https://r-pkgs.org/setup.html#setup-tools">link</a> for more details.</p>
+<p><em>Note:</em> Packages should be installed only <strong>once</strong>. No needs to install them every time when you want to use them (it is the same as installing Skype every time you want to call your parents). That is why it is better to do it in console, not in source editor.</p>
+<p><em>Check yourself:</em> <a href="https://stackoverflow.com/questions/9341635/check-for-installed-packages-before-running-install-packages">To check if a package was installed successfully</a>, use <code>&quot;name_of_package&quot; %in% rownames(installed.packages())</code>.</p>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/en/tutorials/github/" title="Git(hub) setup"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/en/tutorials/workflow/" title="Project-oriented workflow" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1732610602"></script>
+    <script src="/js/perfect-scrollbar.min.js?1732610602"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1732610602"></script>
+    <script src="/js/jquery.sticky.js?1732610602"></script>
+    <script src="/js/featherlight.min.js?1732610602"></script>
+    <script src="/js/highlight.pack.js?1732610602"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1732610602"></script>
+    <script src="/js/learn.js?1732610602"></script>
+    <script src="/js/hugo-learn.js?1732610602"></script>
+
+    <link href="/mermaid/mermaid.css?1732610602" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1732610602"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+
+  </body>
+</html>
+

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tutorials on Programming tools for data science</title>
+    <link>http://localhost:1313/en/tutorials/</link>
+    <description>Recent content in Tutorials on Programming tools for data science</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <lastBuildDate>Tue, 05 Sep 2023 13:10:39 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/en/tutorials/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git(hub) setup</title>
+      <link>http://localhost:1313/en/tutorials/github/</link>
+      <pubDate>Tue, 05 Sep 2023 13:10:39 +0200</pubDate>
+      <guid>http://localhost:1313/en/tutorials/github/</guid>
+      <description>Installing and setting up Git, GitHub, and a Git GUI In this section we will install a distributed version-control system Git, register a new user at GitHub and connect them together.&#xA;1. Installing and setting up Git Download Git installer from git website by clicking on &amp;ldquo;Download for Windows&amp;rdquo; or &amp;ldquo;Download for macOS&amp;rdquo; button, automatically detected for your machine. Open the downloaded file and follow the proposed steps Configure your Git to let it know who you are.</description>
+    </item>
+    <item>
+      <title>R/RStudio setup</title>
+      <link>http://localhost:1313/en/tutorials/r_install/</link>
+      <pubDate>Tue, 05 Sep 2023 13:10:39 +0200</pubDate>
+      <guid>http://localhost:1313/en/tutorials/r_install/</guid>
+      <description>Installing R and RStudio 1. Installing R Install the latest version of R (4.3.1 as of September 5, 2023). R itself is similar to an engine and chassis of a car, that is a bare minimum so that you can start driving. You need to follow steps below:&#xA;Visit https://cran.r-project.org and click on &amp;ldquo;Download R for &amp;hellip;&amp;rdquo;, where &amp;hellip; corresponds to your operating system. Depending on the operating system: For Mac: download &amp;ldquo;R-4.</description>
+    </item>
+    <item>
+      <title>Project-oriented workflow</title>
+      <link>http://localhost:1313/en/tutorials/workflow/</link>
+      <pubDate>Mon, 03 Sep 2018 11:19:38 +0200</pubDate>
+      <guid>http://localhost:1313/en/tutorials/workflow/</guid>
+      <description>It’s like agreeing that we will all drive on the left or the right. A hallmark of civilization is following conventions that constrain your behavior a little, in the name of public safety. Jenny Bryan Introduction In this tutorial we will learn key aspects of making a good research project:&#xA;reproducible portable self-contained In data science context, reproducibility means that the whole analysis can be recreated (or repeated) from the fresh start and raw data and get exactly the same results.</description>
+    </item>
+  </channel>
+</rss>

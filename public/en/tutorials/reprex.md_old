@@ -1,0 +1,135 @@
++++
+title = "reprex and slackreprex"
+date =  2018-09-19T13:10:39+02:00
+weight = 15
++++
+
+In this short tutorial, you will learn how to use `reprex` in combination with `Slack`. 
+
+### `reprex` package
+
+`reprex` allows you to produce reproducible code for external users to read both the lines of code and their results. It also allows us (or your colleagues) to debug your code in an easy way. Reprex is useful when one wants to check whether a part of code is directly executable by another user, meaning for example that any call to a library should also be specified in such a code. 
+
+Think of the following example, that could be your (local) R script: 
+
+```{toml}
+x <- rnorm(50, 0, 1) 
+y <- rnorm(50, 1, 1) 
+mean(x) 
+mean(y)
+```
+
+Suppose that after a while, you use both `x` and `y` in a new script, so they are both saved in your temporary environment, but since this is a new script and you want to send it to someone, you redefine `x` but forget to do so with `y`. Although in your local session you will still have a trace of `y`, this will not be the case for someone executing the following code, where the definition of `y` is missing: 
+
+```{toml}
+x <- rnorm(50, 0, 1) 
+mean(x) 
+mean(y)
+```
+
+You might get an error (in this case, the error is easy to trace back, since it will directly say that `y` is undefined, but this could be a more complicated error which requires some external help).
+
+In this case, to get help with the error in your code, you may want to create a reprex. First, download the `reprex` package. Then, simply copy (to your clipboard) the code above and in the `R` console, type: 
+
+```{toml}
+reprex()
+```
+
+You should then see in your Viewer something similar to the picture below: 
+
+<img src="/tutorials/reprex1.png" /> 
+
+One can see that, indeed, since the `y` variable has not yet been defined in the code copied to the clipboard, this results in an error. 
+
+### The `slackreprex` package 
+
+For the purpose of this course, questions you might have about particular exercises, chunk of codes, etc. could be directly pushed into the `Slack` environment. This will allow us to debugg you "live" and can also greatly improve communication in your group if you use a dedicated channel to discuss your code. 
+
+First, you will need to install `slackreprex`, `slackteams` and `slackr`. For the first two packages, you will need to use the `install_github()` procedure from the `remotes` package: 
+
+```{toml} 
+remotes::install_github("yonicd/slackreprex")
+remotes::install_github("yonicd/slackteams")
+install.packages("slackr")
+```
+
+Then load the packages into your `R` session. 
+
+Each `Slack` channel has a `SLACK_KEY_ID`. For the purpose of this test, we will post in only one single channel. To find the `SLACK_KEY_ID` related to a channel, visit the page [here](https://github.com/yonicd/slackr-app)
+
+Then in Usage, click on the "Add to Slack" button. It will open the following page: 
+
+<img src="/tutorials/page.png" /> 
+
+In the menu in the bottom of the page, select the channel `#tuto-reprex`. It will prompt a JSON file with the `SLACK_ID` that you will need to copy below. 
+
+You then need to authenticate your `Slack` connection. To do so, you need to first retrieve your `MEMBER_ID` in Slack. To do so, go to your Profile ("Display your profile"): 
+
+<img src="/tutorials/profile.png" /> 
+
+and then, select "More..." to find your `MEMBER_ID` that you can copy, that will display instead of the black chunk below: 
+
+<img src="/tutorials/id.png" /> 
+
+Then, use this `MEMBER_ID` and `SLACK_KEY_ID` to obtain a `json` file in order to connect your `R` session to Slack, by typing in your browser: 
+
+https://slackr-auth.herokuapp.com/creds/MEMBER_ID/SLACK_KEY_ID 
+
+replacing `MEMBER_ID` and `SLACK_KEY_ID` by the information your retrieved previously. Your browser should display information of the following form: 
+
+<img src="/tutorials/api.png" /> 
+
+You will have to use these information in the `slackrSetup()` function in `R` to authenticate. In this case, you would write something like the following: 
+
+```{toml} 
+slackrSetup(channel = "#tuto_reprex",
+            incoming_webhook_url = "https://hooks.slack.com/services/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",
+            api_token = "xoxp-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+```
+
+Now, you can undertake a test to check whether you can post a direct message from your `R` session, by typing: 
+
+```{toml}
+slackr("Here is my attempt to post") 
+```
+
+In order to now use `reprex` in combinaison with `Slack`, you will have to add a team (i.e. the channel you want to post your `reprex` in) and activate it to then post your `reprex`. For example, you want to show that the following code does not work: 
+
+```{toml} 
+  x <- 10
+  hist(runif(x))
+  hist(runif(2*y))
+```
+
+In order to do so, first do the following operations: 
+
+```{toml} 
+  team <- add_team('tuto_reprex', token="xoxp-XXXXXXXXXXXXXXXXXXXXXXXXXXX")
+  slackteams::activate_team('tuto_reprex')
+```
+where you replace the `XXX` by the `api_token` obtained above in the `json` file. The second line of code consists of activating the team, here `tuto_reprex`. 
+
+Then, you want to push your code in this channel, using the `slack_reprex()` function that you can customise with some text explaining where/why/how you are stuck: 
+
+```{toml}
+slack_reprex({
+  x <- 10
+  hist(runif(x))
+  hist(runif(2*y))
+},
+text = 'My code is not working...',
+channel = "tuto_reprex"
+)
+```
+
+The following should then be posted in the `tuto_reprex` feed in Slack: 
+
+<img src="/tutorials/output1.png" /> 
+
+and clicking the "response" in the second post should display on the right-hand side of your screen the following `reprex` with the error displayed: 
+
+<img src="/tutorials/output2.png" /> 
+
+
+
+
